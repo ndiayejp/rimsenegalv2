@@ -1,13 +1,24 @@
 import './bootstrap';
-import 'flowbite';
-import.meta.glob([
-    '../images/**'
-]);
-import '@fortawesome/fontawesome-free/js/all';
 
-import {createApp} from "vue"
-import Counter from "./components/Counter.vue"
+
+import Alpine from 'alpinejs';
+
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
+
+import 'flowbite';
+
+import Counter from './components/Counter.vue';
+import PropertyCard from './components/PropertyCard.vue';
 
 const app = createApp({});
-app.component('Counter',Counter)
-app.mount("#app")
+
+app.component('counter', Counter);
+app.component('property-card', PropertyCard);
+
+app.mount("#app");
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
+

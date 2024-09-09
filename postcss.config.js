@@ -1,6 +1,8 @@
+const postcssUrl = require('postcss-url');
+
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
+    plugins: [
+        require('tailwindcss'),
+        require('autoprefixer')
+      ]
+};

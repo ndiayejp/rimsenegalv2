@@ -1,24 +1,31 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-    "./node_modules/flowbite/**/*.js"
+export default {
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
-  theme: {
-    extend: {
+
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
         colors:{
-            yellow:'#FEF029',
-            "blue":"#008dcf"
+            black:'#060606',
+            primary: '#008dcf',
+            secondary: '#fff02a',
         },
         fontFamily:{
             "hanken-grotest":["Hanken Grotesk", "sans-serif"]
-        }
+        },
     },
-  },
-  plugins: [
-    require('flowbite/plugin')
-  ],
-}
 
+    plugins: [forms,  require('flowbite/plugin')],
+};
