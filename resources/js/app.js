@@ -1,5 +1,7 @@
 import './bootstrap';
 
+import jQuery from 'jquery';
+
 
 import Alpine from 'alpinejs';
 
@@ -18,7 +20,10 @@ app.component('property-card', PropertyCard);
 app.mount("#app");
 
 window.Alpine = Alpine;
+window.$ = jQuery;
+
 
 Alpine.start();
+
 
 

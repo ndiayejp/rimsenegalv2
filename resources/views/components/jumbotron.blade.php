@@ -6,7 +6,7 @@
             markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             <a href="#"
-                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-primary hover:bg-secondary hover:text-gray-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-transparent border hover:border-transparent hover:bg-secondary hover:text-gray-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 A propos
                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 14 10">
@@ -15,7 +15,7 @@
                 </svg>
             </a>
             <a href="/nos-biens"
-                class="inline-flex justify-center gap-2 items-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                class="inline-flex justify-center gap-2  bg-primary hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded  hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                 Voir nos biens <i class="fas fa-home"></i>
             </a>
         </div>
