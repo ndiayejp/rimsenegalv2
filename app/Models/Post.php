@@ -11,10 +11,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Post extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Enums\Fit;
+class Post extends Model implements HasMedia
 {
-    use HasFactory, AttachableConcern;
+    use HasFactory, AttachableConcern, InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -30,7 +33,7 @@ class Post extends Model
 
     public static function draft()
     {
-        return self::firstOrCreate(['name'=>null],['content'=>'']);
+        return self::firstOrCreate(['name' => null], ['content' => '']);
     }
 
     public function scopeNotDraft($query)
@@ -38,4 +41,10 @@ class Post extends Model
         return $query->whereNotNull('name');
     }
 
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('preview')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
+    }
 }

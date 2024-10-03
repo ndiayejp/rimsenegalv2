@@ -49,18 +49,21 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request): RedirectResponse
     {
-        if ($request->hasFile('thumb')) {
-            $post = (new FileService())->uploadImage($post, $request->file('thumb'));
-        }
-        Post::create([
+
+        $post = Post::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'category_id' => $request->category_id,
             'content' => $request->content,
             'status' => $request->input('status') ? 1 : 0,
-            'image' => $post->image,
+
             'user_id' => 1,
         ]);
+        if ($file = $request->hasFile('thumb')) {
+        $post
+        ->addMedia($file)
+        ->toMediaCollection();
+        }
 
         return redirect('/admin/posts')->with('success', 'Article ajouté');
     }
@@ -83,9 +86,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post): RedirectResponse
     {
-        if ($request->hasFile('thumb')) {
-            $post = (new FileService())->uploadImage($post, $request->file('thumb'));
-        }
+
 
         $post->update([
             'name' => $request->name,
@@ -93,9 +94,15 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'content' => $request->content,
             'status' => $request->input('status') ? 1 : 0,
-            'image' => $post->image,
+
             'user_id' => 1,
         ]);
+        if ( $request->hasFile('thumb')) {
+             $file = $request->file('thumb');
+            $post
+            ->addMedia($file)
+            ->toMediaCollection();
+        }
         return redirect('/admin/posts')->with('success', 'Article modifié');
     }
 

@@ -65,9 +65,9 @@
                                 'name' => 'thumb',
                                 'type' => 'file',
                             ])
-                            @if ($post->image != null)
+                            @if ($post->getMedia()->count() > 0)
                                 <div class="flex justify-center">
-                                    <img src="{{ asset($post->image) }}" class="w-64 border p-1.5 rounded">
+                                    <img src="{{ $post->getFirstMediaUrl() }}" class="w-64 border p-1.5 rounded">
                                 </div>
                             @endif
                             <div class="flex items-center mb-4 p-2 border border-gray-200 rounded">

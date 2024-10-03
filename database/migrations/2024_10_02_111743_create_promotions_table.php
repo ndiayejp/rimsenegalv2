@@ -15,8 +15,6 @@ return new class extends Migration {
             $table->string('title');
             $table->text('content');
             $table->string('status')->default('0');
-            $table->string('image')->nullable();
-            $table->json('images')->nullable();
             $table->json('specifications')->nullable();
             $table->timestamps();
         });

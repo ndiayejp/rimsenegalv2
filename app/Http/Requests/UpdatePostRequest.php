@@ -25,7 +25,6 @@ class UpdatePostRequest extends FormRequest
         return [
            'name' => ['required', 'min:5'],
            'content' => ['required'],
-           'thumb' => ['nullable', File::types(['jpg', 'png'])],
            'category_id' => ['required'],
         ];
     }
