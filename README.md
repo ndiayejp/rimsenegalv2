@@ -16,8 +16,20 @@ Ce projet est une application web pour une agence immobilière développé avec 
     # composer
     # Npm ou yarn
     # Mysql ou une autre base de données relationnelles 
-
-
+# Contribution
+les contributions ou évolutions sont les bienvenues, si vous souhaitez ajouter ou corriger des fonctionnalités suivez les étapes suivantes:
+    - Forker le projet
+    - Créer une nouvelle branche 
+        git checkout -b ma-nouvelle-fonctionnnalité 
+    - Faire un commit
+        git commit -m "Ajout dune nouvelle fonctionnalité
+    Pousser sur  la branche
+        git push origin ma nouvelle-fonctionnalite
+    Ouvrir une pull request
+# Licence
+Ce projet est sous licence MIT Voir le fichier LICENCE pour plus de détails
+# Auteur 
+    Jean paul NDIAYE Développeur principal
 
  
  
