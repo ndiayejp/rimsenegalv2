@@ -1,4 +1,5 @@
 <x-adminlayout>
+    @section('title', 'Mettre à jour une page')
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-7xl lg:py-16">
 
@@ -11,8 +12,8 @@
                     @endif
                 </h2>
                 <a href="{{ route('admin.pages.index') }}"
-                    class="flex gap-1 items-center justify-center text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                    <i class="fas fa-file-alt"></i> liste des pages
+                    class="flex gap-1 items-center justify-center uppercase text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                    <i class="fas fa-file-alt "></i> Liste des pages
                 </a>
             </div>
             <form action="{{ route($page->exists ? 'admin.pages.update' : 'admin.pages.store', $page) }}" method="POST"
@@ -60,7 +61,7 @@
                             </div>
                             <div class="flex justify-end items-center">
                                 <button
-                                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary hover:bg-gray-800 hover:text-white rounded focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    class="inline-flex items-center w-full px-5 py-2.5  text-sm font-medium text-center text-white bg-primary hover:bg-gray-800 hover:text-white rounded focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                     @if ($page->exists)
                                         Enregistrer
                                     @else
@@ -82,6 +83,8 @@
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/trumbowyg/trumbowyg.min.js') }}"></script>
             <script src="{{ asset('js/trumbowyg/plugins/upload/trumbowyg.upload.min.js') }}"></script>
+            <script src="{{ asset('js/trumbowyg/jquery-resizable.min.js') }}"></script>
+            <script src="{{ asset('js/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script>
             <script src="{{ asset('js/editor.js') }}"></script>
         @endsection
     @endif

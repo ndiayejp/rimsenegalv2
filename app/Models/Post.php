@@ -5,16 +5,18 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Attachment;
+use Illuminate\Support\Str;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
 use App\Concerns\AttachableConcern;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Image\Enums\Fit;
+
 class Post extends Model implements HasMedia
 {
     use HasFactory, AttachableConcern, InteractsWithMedia;
@@ -39,6 +41,21 @@ class Post extends Model implements HasMedia
     public function scopeNotDraft($query)
     {
         return $query->whereNotNull('name');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeMightAlsoLike($query)
+    {
+    return $query->inRandomOrder()->take(4);
+    }
+
+    public function getSlug(): string
+    {
+        return Str::slug($this->name);
     }
 
     public function registerMediaConversions(?Media $media = null): void

@@ -11,20 +11,22 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" />
-
+    @livewireStyles
+    @livewireScripts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('styles')
-    @stack('scripts')
+    @yield('styles')
+    @yield('scripts')
+
 </head>
 
 <body class="bg-gray-50 text-white font-hanken-grotest">
     <div>
         <nav class="bg-secondary text-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{ Vite::asset('resources/images/logo.png') }}" class="w-16" />
                     <span
-                        class="self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
+                        class="hidden lg:block self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
                         Immobilière Mugnier</span>
                 </a>
                 <button data-collapse-toggle="navbar-multi-level" type="button"
@@ -91,22 +93,23 @@
                                 class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Louer/Acheter</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('promotions.index') }}"
                                 class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Promotions
                                 immobilières</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('contact') }}"
                                 class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <main class="mx-auto" id="app">
+        <main class="mx-auto min-h-96" id="app">
             {{ $slot }}
         </main>
     </div>
+    <x-footer></x-footer>
 
 </body>
 

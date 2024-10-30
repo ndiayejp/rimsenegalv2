@@ -1,4 +1,5 @@
 <x-adminlayout>
+    @section('title', 'Mettre à jour un article')
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-7xl lg:py-16">
 
@@ -11,10 +12,11 @@
                     @endif
                 </h2>
                 <a href="{{ route('admin.posts.index') }}"
-                    class="flex gap-1 items-center justify-center text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                    class="flex gap-1 items-center justify-center uppercase text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                     <i class="fas fa-file-alt"></i> liste des articles
                 </a>
             </div>
+
             <form action="{{ route($post->exists ? 'admin.posts.update' : 'admin.posts.store', $post) }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
@@ -67,7 +69,8 @@
                             ])
                             @if ($post->getMedia()->count() > 0)
                                 <div class="flex justify-center">
-                                    <img src="{{ $post->getFirstMediaUrl() }}" class="w-64 border p-1.5 rounded">
+                                    <img src="{{ $post->getFirstMediaUrl('default', 'preview') }}"
+                                        class="w-64 border p-1.5 rounded">
                                 </div>
                             @endif
                             <div class="flex items-center mb-4 p-2 border border-gray-200 rounded">
@@ -79,7 +82,7 @@
                             </div>
                             <div class="flex justify-end items-center">
                                 <button
-                                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary hover:bg-gray-800 hover:text-white rounded focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    class="inline-flex items-center w-full px-5 py-2.5 text-sm font-medium text-center text-white bg-primary hover:bg-gray-800 hover:text-white rounded focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                     @if ($post->exists)
                                         Enregistrer
                                     @else

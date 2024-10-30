@@ -61,7 +61,12 @@ if($('#editor').trumbowyg){
       resizimg: {
         minSize: 64,
         step: 16,
-      }
+        },
+      tagClasses: {
+
+
+        img: 'float-left',
+    }
     }
   })
 }

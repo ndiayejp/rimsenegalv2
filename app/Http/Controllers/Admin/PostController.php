@@ -36,12 +36,7 @@ class PostController extends Controller
     public function create()
     {
         $post = Post::draft();
-        return view('admin.posts.form', [
-            'post' => $post,
-            'categories' => Category::pluck('name', 'id'),
-            'selectedValue' => $post->category_id,
-            'editor' => 'trumbowyg',
-        ]);
+        return $this->edit($post);
     }
 
     /**
@@ -73,6 +68,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
         return view('admin.posts.form', [
             'post' => $post,
             'categories' => Category::pluck('name', 'id'),
@@ -94,7 +90,6 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'content' => $request->content,
             'status' => $request->input('status') ? 1 : 0,
-
             'user_id' => 1,
         ]);
         if ( $request->hasFile('thumb')) {

@@ -1,4 +1,4 @@
-<section class="bg-gray-50 dark:bg-gray-900">
+<section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <x-section-heading>
             <x-slot:title>Choisissez l’agence RIM Sénégal?</x-slot:title>

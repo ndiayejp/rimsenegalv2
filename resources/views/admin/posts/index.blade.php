@@ -1,4 +1,5 @@
 <x-adminlayout>
+    @section('title', 'Liste des articles')
     <!-- Start block -->
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -13,7 +14,7 @@
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                         <a href="{{ route('admin.posts.create') }}"
-                            class="flex gap-1 items-center justify-center text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                            class="flex gap-1 items-center justify-center uppercase text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                             <i class="fas fa-plus"></i> Ajouter un article
                         </a>
                     </div>
@@ -47,47 +48,29 @@
                                             </div>
                                         </label>
                                     </td>
-                                    <td class="px-4 py-3 flex items-center justify-end">
-                                        <button id="post-{{ $post->id }}-dropdown-button"
-                                            data-dropdown-toggle="post-{{ $post->id }}-dropdown"
-                                            class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                                            type="button">
-                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
-                                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            </svg>
-                                        </button>
-                                        <div id="post-{{ $post->id }}-dropdown"
-                                            class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                            <ul class="py-1 text-sm">
-                                                <li>
-                                                    <a href="{{ route('admin.posts.edit', $post) }}"
-                                                        class="flex gap-1 w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
-                                                        <i class="fas fa-pencil"></i>
-                                                        Editer
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"
-                                                        onclick="event.preventDefault(); document.getElementById('del-post-{{ $post->id }}').submit()"
-                                                        class="flex
-                                                        gap-1 w-full items-center py-2 px-4 hover:bg-gray-100
-                                                        dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400">
-                                                        <i class="fas fa-trash"></i>
-                                                        Supprimer
-                                                        <form action="{{ route('admin.posts.destroy', $post) }}"
-                                                            style="display:none" method="POST"
-                                                            id="del-post-{{ $post->id }}">
+                                    <td class="px-4 py-3 flex items-center justify-end gap-2">
+                                        <a href="{{ route('admin.posts.edit', $post) }}"
+                                            class="flex gap-1 rounded border items-center py-2 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
+                                            <i class="fas fa-pencil"></i>
 
-                                                            @csrf
-                                                            @method('delete')
-                                                        </form>
-                                                    </a>
+                                        </a>
+                                        <a href="#"
+                                            onclick="event.preventDefault(); document.getElementById('del-post-{{ $post->id }}').submit()"
+                                            class="rounded flex
+                                                        gap-1 items-center py-2 px-2 hover:bg-red-800
+                                                        dark:hover:bg-gray-600 bg-red-500 text-white dark:hover:text-red-400">
+                                            <i class="fas fa-trash"></i>
 
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            <form action="{{ route('admin.posts.destroy', $post) }}"
+                                                style="display:none" method="POST" id="del-post-{{ $post->id }}">
+
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                        </a>
+
+
+
                                     </td>
                                 </tr>
                             @endforeach

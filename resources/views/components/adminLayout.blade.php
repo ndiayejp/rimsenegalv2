@@ -9,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     @yield('script-css')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -87,17 +89,19 @@
                     <div class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                         id="dropdown">
                         <div class="py-3 px-4">
-                            <span class="block text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</span>
-                            <span class="block text-sm text-gray-900 truncate dark:text-white">name@flowbite.com</span>
+                            <span
+                                class="block text-sm font-semibold text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
+                            <span
+                                class="block text-sm text-gray-900 truncate dark:text-white">{{ Auth::user()->email }}</span>
                         </div>
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.profile.edit') }}"
                                     class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Mon
                                     profil</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.settings.index') }}"
                                     class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
                                     Paramètres</a>
                             </li>
@@ -105,8 +109,14 @@
 
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
-                                <a href="#"
-                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Déconnexion</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a tabindex="-1"
+                                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                                        Déconnexion </a>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -139,7 +149,7 @@
                 </form>
                 <ul class="space-y-2">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.dashboard.index') }}"
                             class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-dashboard text-gray-500"></i>
                             <span class="ml-3">Tableau de bord</span>
@@ -147,27 +157,27 @@
                     </li>
                     <li>
                         <button type="button"
-                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
                             aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
                             <i class="fas fa-file-alt text-gray-500"></i>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Pages</span>
-                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
-                        <ul id="dropdown-pages" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-pages"
+                            class=" py-2 space-y-2 {{ str_contains($route, 'pages.') || str_contains($route, 'menus.') ? 'expanded' : 'hidden' }}">
                             <li>
-                                <a href="{{ route('admin.pages.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gérer
-                                    les pages</a>
+                                <a href="{{ route('admin.pages.index') }}" @class([
+                                    'px-3 hover:bg-secondary hover:text-gray-800 text-gray-600 flex items-center p-2 pl-11 w-full font-medium rounded transition duration-75',
+                                    'bg-primary text-white' => str_contains($route, 'pages.'),
+                                ])>Gérer les
+                                    pages</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.menus.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gérer
-                                    les menus</a>
+                                <a href="{{ route('admin.menus.index') }}" @class([
+                                    'px-3 hover:bg-secondary hover:text-gray-800 text-gray-600 flex items-center p-2 pl-11 w-full font-medium rounded transition duration-75',
+                                    'bg-primary text-white' => str_contains($route, 'menus.'),
+                                ])>Gérer les
+                                    menus</a>
                             </li>
 
                         </ul>
@@ -175,31 +185,27 @@
                     <li>
                         <button type="button"
                             class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-sales" data-collapse-toggle="dropdown-sales">
+                            aria-controls="dropdown-posts" data-collapse-toggle="dropdown-posts">
                             <i class="fas fa-file text-gray-500"></i>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Articles</span>
-                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
-                        <ul id="dropdown-sales" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-posts"
+                            class="py-2 space-y-2 {{ str_contains($route, 'posts.') || str_contains($route, 'categories.') ? 'expanded' : 'hidden' }}">
                             <li>
                                 <a href="{{ route('admin.posts.index') }}" @class([
                                     'px-3 hover:bg-secondary hover:text-gray-800 text-gray-600 flex items-center p-2 pl-11 w-full font-medium rounded transition duration-75',
                                     'bg-primary text-white' => str_contains($route, 'posts.'),
-                                ])>Gérer
-                                    des articles</a>
+                                ])>Gérer des
+                                    articles</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.categories.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gérer
+                                <a href="{{ route('admin.categories.index') }}" @class([
+                                    'px-3 hover:bg-secondary hover:text-gray-800 text-gray-600 flex items-center p-2 pl-11 w-full font-medium rounded transition duration-75',
+                                    'bg-primary text-white' => str_contains($route, 'categories.'),
+                                ])>Gérer
                                     des catégories</a>
                             </li>
-
-
                         </ul>
                     </li>
 
@@ -209,17 +215,15 @@
                             aria-controls="dropdown-authentication" data-collapse-toggle="dropdown-authentication">
                             <i class="fa-solid fa-tags text-gray-500"></i>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Promotions Immo</span>
-                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
-                        <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-authentication"
+                            class="  py-2 space-y-2 {{ str_contains($route, 'promotions.') ? 'expanded' : 'hidden' }}">
                             <li>
-                                <a href="{{ route('admin.promotions.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                <a href="{{ route('admin.promotions.index') }}" @class([
+                                    'px-3 hover:bg-secondary hover:text-gray-800 text-gray-600 flex items-center p-2 pl-11 w-full font-medium rounded transition duration-75',
+                                    'bg-primary text-white' => str_contains($route, 'promotions.'),
+                                ])>
                                     Gérer les promotions</a>
                             </li>
 
@@ -231,23 +235,54 @@
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
                             <i class="fas fa-users text-gray-500"></i>
                             <span class="flex-1 ml-3 text-left whitespace-nowrap">Utilisateurs</span>
-                            <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
-                        <ul id="dropdown-users" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-users"
+                            class="  py-2 space-y-2 {{ str_contains($route, 'users.') ? 'expanded' : 'hidden' }}">
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.users.index') }}"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gérer
                                     les utilisateurs</a>
                             </li>
 
                         </ul>
                     </li>
+                    <li>
+                        <button type="button"
+                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-agencies" data-collapse-toggle="dropdown-agencies">
+                            <i class="fas fa-home text-gray-500"></i>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Agences</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul id="dropdown-agencies"
+                            class="  py-2 space-y-2 {{ str_contains($route, 'agencies.') ? 'expanded' : 'hidden' }}">
+                            <li>
+                                <a href="{{ route('admin.agencies.index') }}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gérer
+                                    les agences</a>
+                            </li>
 
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button"
+                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-settings" data-collapse-toggle="dropdown-settings">
+                            <i class="fas fa-home text-gray-500"></i>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap">Paramètres</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul id="dropdown-settings"
+                            class="  py-2 space-y-2 {{ str_contains($route, 'settings.') ? 'expanded' : 'hidden' }}">
+                            <li>
+                                <a href="{{ route('admin.settings.index') }}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                    Mettre à jour les paramètres</a>
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
 
             </div>
@@ -258,6 +293,13 @@
         </main>
     </div>
     @yield('script-js')
+    <script>
+        new TomSelect("#input-tags", {
+            persist: false,
+            createOnBlur: true,
+            create: true
+        });
+    </script>
 </body>
 
 </html>

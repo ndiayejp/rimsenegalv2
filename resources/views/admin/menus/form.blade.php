@@ -1,9 +1,10 @@
 <x-adminlayout>
+    @section('title', 'Mettre à jour un menu')
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-7xl lg:py-16">
 
             <div class="flex items-center justify-between">
-                <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+                <h2 class=" text-xl font-bold text-gray-900 dark:text-white">
                     @if ($menu->exists)
                         Modifier un menu
                     @else
@@ -11,7 +12,7 @@
                     @endif
                 </h2>
                 <a href="{{ route('admin.menus.index') }}"
-                    class="flex gap-1 items-center justify-center text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                    class="flex gap-1 items-center justify-center uppercase text-white bg-primary hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                     <i class="fas fa-file-alt"></i> liste des menus
                 </a>
             </div>
