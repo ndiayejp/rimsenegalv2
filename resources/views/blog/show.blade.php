@@ -1471,14 +1471,14 @@
         <div class="py-8  mx-auto max-w-screen-xl text-justify text-gray-600">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="col-span-2">
-                    <div class="px-3 lg:px-0">
+                    <div class="bg-white p-5 rounded-lg shadow">
                         {!! $post->content !!}
                     </div>
                 </div>
                 <div class="col-span-1">
                     <div class="text-left px-3 lg:px-0">
                         <h3 class="text-xl font-bold mb-5">{{ __('Catégories') }}</h3>
-                        <ul class="border shadow-sm bg-white rounded px-3 py-1.5">
+                        <ul class="shadow bg-white rounded-lg px-3 py-1.5">
                             @foreach ($categories as $cat)
                                 @if ($cat->posts()->count() > 0)
                                     <li class="py-1.5">

@@ -12,7 +12,7 @@
                     <h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase dark:text-white">A découvrir</h2>
                     <ul class="text-gray-200 dark:text-gray-400">
                         <li class="mb-4">
-                            <a href="https://flowbite.com" class="hover:underline">Nos conseils</a>
+                            <a href="#" class="hover:underline">Nos conseils</a>
                         </li>
                         <li>
                             <a href="{{ route('blog.index') }}" class="hover:underline">Nos actualités</a>

@@ -3,7 +3,7 @@
         <div
             class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
             <div class="mx-auto max-w-screen-xl text-center relative z-10">Nous Contacter</div>
-            <div class="text-xl font-normal">Coordonnées de nos agences</div>
+            <div class="text-xl font-normal">Où nous trouver</div>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
