@@ -1023,8 +1023,8 @@
                     fill="#cbcbcb" />
             </svg>
     </div>
-    <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-10 lg:px-6 ">
-        <div class="bg-white rounded dark:bg-gray-800 relative shadow-sm border overflow-hidden">
+    <div class="max-w-screen-2xl mx-auto py-8 px-4 lg:py-10 lg:px-6 ">
+        <div class="bg-white rounded-lg dark:bg-gray-800 relative shadow-md overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <div class="w-full md:w-1/2">
                     <div class="relative w-full">
@@ -1032,7 +1032,7 @@
                             <i class="fas fa-map-pin text-primary"></i>
                         </div>
                         <input v-model="filters.city" type="text"
-                            class="bg-white font-bold border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white font-bold border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Dans quelle ville ? Quartier ?" />
                     </div>
                 </div>
@@ -1041,7 +1041,7 @@
                     <div class="flex items-center space-x-3 w-full md:w-auto">
                         <div>
                             <select v-model="filters.category"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="">Familles de biens</option>
                                 <option :value="category" v-for="category in allCategories" :key="category">
                                     {{ category }}
@@ -1050,7 +1050,7 @@
                         </div>
                         <div>
                             <select v-model="filters.transaction"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value="">Type de recherche</option>
                                 <option value="Location">Location</option>
                                 <option value="Vente">Vente</option>
@@ -1058,12 +1058,12 @@
                         </div>
                         <div>
                             <input v-model="filters.maxPrice" type="number" name="price" min="0"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Budget maximum" />
                         </div>
                         <div>
                             <input v-model="filters.nbPieces" type="number" name="nbpiece" min="0"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Nombre de pièces" />
                         </div>
                     </div>
@@ -1072,7 +1072,7 @@
         </div>
         <div class="text-gray-600 py-5 flex justify-end">
             <select @onchange="filteredProperties" v-model="sortOption"
-                class="text-gray-600 font-bold rounded border text-sm border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                class="text-gray-600 font-bold rounded-lg border text-sm border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 <option value="">Trier par:</option>
                 <option value="priceAsc">Prix croissant</option>
                 <option value="priceDesc">Prix décroissant</option>
@@ -1082,7 +1082,7 @@
         <section class="bg-gray-50 antialiased dark:bg-gray-900">
             <div class="flex flex-col md:flex-row gap-6">
                 <!-- Colonne de gauche : Liste des annonces -->
-                <div class="w-full lg:w-1/2 bg-white shadow p-4 rounded overflow-auto max-h-screen">
+                <div class="w-full lg:w-1/2 bg-white shadow-md p-4 rounded-lg overflow-auto max-h-screen">
                     <div class="mx-auto max-w-7xl 2xl:px-0">
                         <div v-if="loading || isFiltering" class="flex items-center justify-center w-full">
                             <div role="status">
@@ -1121,7 +1121,7 @@
                                             <div class="flex-shrink-0">
                                                 <img class="w-20 h-16 rounded-lg"
                                                     :src="property.thumb ||
-                                                        '../images/no-image.png'"
+                                                        '../images/noimage.jpg'"
                                                     @error="handleImageError" />
                                             </div>
                                             <div class="flex-1 min-w-0 ms-4">
@@ -1173,7 +1173,7 @@
                     </div>
                 </div>
                 <!-- Colonne de droite : Détails de l'annonce -->
-                <div class="w-full lg:w-1/2 bg-white p-4 rounded shadow">
+                <div class="w-full lg:w-1/2 bg-white p-4 rounded-lg shadow-md">
                     <div v-if="selectedProperty">
                         <div class="flex items-center justify-between">
                             <h2 class="text-xl font-bold mb-4 dark:text-white text-primary">
@@ -1194,26 +1194,26 @@
                         </div>
                         <template v-if="filteredImages.length > 0">
                             <h2 class="font-bold text-xl text-primary">Galerie</h2>
-                            <div class="flex flex-wrap items-center gap-2 mt-4">
+                            <div class="flex flex-wrap items-center gap-2 my-4">
                                 <img v-for="(image, index) in filteredImages" :key="index" :src="image"
                                     alt="Thumbnail" class="w-16 h-16 object-cover cursor-pointer rounded"
-                                    @click="openLightbox(index)" @error="markImageAsBroken(index)" />
+                                    @click="openLightbox(index)" @error="()=>markImageAsBroken(index,image)" />
                             </div>
                         </template>
                         <h2 v-if="selectedProperty.nbchambres || selectedProperty.nbpieces ||  selectedProperty.surface"
                             class="font-bold text-xl text-primary my-4">Caractéristiques</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                            <div class="text-gray-600 border rounded p-3 mb-5"
+                            <div class="text-gray-600 border rounded-lg p-3 mb-5"
                                 v-if="selectedProperty.nbchambres && selectedProperty.nbchambres !=0">
                                 <h2 class="font-semibold text-md"> Nbre Chambres</h2>
                                 {{ selectedProperty . nbchambres }}
                             </div>
-                            <div class="text-gray-600 border rounded p-3 mb-5"
+                            <div class="text-gray-600 border rounded-lg p-3 mb-5"
                                 v-if="selectedProperty.nbpieces && selectedProperty.nbpieces!=0">
                                 <h2 class="font-semibold text-md"> Nbre pièces</h2>
                                 {{ selectedProperty . nbpieces }}
                             </div>
-                            <div class="text-gray-600 border rounded p-3 mb-5"
+                            <div class="text-gray-600 border rounded-lg p-3 mb-5"
                                 v-if="selectedProperty.surface && selectedProperty.surface!=0">
                                 <h2 class="font-semibold text-md">Surface habitable</h2>
                                 {{ selectedProperty . surface }} m²
@@ -1228,6 +1228,93 @@
                         </p>
                         <h2 class="font-bold text-xl text-primary mb-4">Emplacement</h2>
                         <div id="map" class="w-full h-72"></div>
+                        <button
+                            @click="openContactForm"
+                            class="w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary hover:text-gray-800 my-4">
+                            Contacter l'agence pour ce bien immobilier
+                        </button>
+                        <!-- Modal pour le formulaire -->
+                        <div v-if="isContactFormOpen" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+                            <div class="bg-white relative rounded-lg shadow-lg p-6 w-full max-w-lg">
+                                <button @click="closeContactForm" class="absolute top-4 right-8 text-gray-700">
+                                    <i class="fas fa-xmark"></i>
+                                </button>
+                                <h2 class="text-lg font-bold text-primary mb-4">Contacter l'agence</h2>
+                                <form>
+                                    <input type="hidden" v-model="selectedProperty.id" />
+                                    <input type="hidden" v-model="selectedProperty.reference" />
+                                    <div class="mb-4 text-gray-600">
+                                        <label class="block text-sm font-medium ">Référence</label>
+                                    <p class="font-semibold">{{ selectedProperty.reference }}</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium text-gray-700">Nom</label>
+                                        <input
+                                            v-model="contactForm.name"
+                                            type="text"
+
+                                            :class="[
+                                                'w-full border rounded p-2 text-gray-600',
+                                                formErrors.name ? 'border-red-500' : 'border-gray-300'
+                                            ]"
+                                             @input="validateField('name')"
+                                        />
+                                        <p v-if="formErrors.name" class="text-red-600 text-sm">{{ formErrors.name }}</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input
+                                            v-model="contactForm.email"
+                                            type="email"
+                                             :class="[
+                                                'w-full border rounded p-2 text-gray-600',
+                                                formErrors.email ? 'border-red-500' : 'border-gray-300'
+                                            ]"
+                                             @input="validateField('email')"
+
+                                        />
+                                        <p v-if="formErrors.email" class="text-red-600 text-sm">{{ formErrors.email }}</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-medium text-gray-700">Message</label>
+                                        <textarea
+                                            v-model="contactForm.message"
+                                           :class="[
+                                                'w-full border rounded p-2 text-gray-600',
+                                                formErrors.message ? 'border-red-500' : 'border-gray-300'
+                                            ]"
+                                            rows="4"
+                                        @input="validateField('message')"
+                                        ></textarea>
+                                        <p v-if="formErrors.message" class="text-red-600 text-sm">{{ formErrors.message }}</p>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        @click="submitContactForm"
+                                        :class="[
+                                            'w-full bg-primary text-white py-2 rounded hover:bg-secondary hover:text-gray-700',
+                                            isSubmitting ? 'cursor-not-allowed opacity-50' : ''
+                                        ]"
+                                        :disabled="isSubmitting"
+
+                                    >
+                                        <span v-if="isSubmitting" class="flex items-center justify-center">
+                                            <svg aria-hidden="true" class="w-5 h-5 mr-2 text-white animate-spin fill-primary" viewBox="0 0 100 101"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                                    fill="currentColor" />
+                                                <path
+                                                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                                    fill="currentFill" />
+                                            </svg>
+                                            Envoi en cours...
+                                        </span>
+                                        <span v-else>Envoyer</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1279,6 +1366,22 @@
     const map = ref(null);
     const geocoder = ref(null);
     const selectedImage = ref(null);
+    const brokenImages = ref([]);
+    const isContactFormOpen = ref(false);
+    const isSubmitting = ref(false);
+
+    const contactForm = ref({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const formErrors = ref({
+        name: null,
+        email: null,
+        message: null,
+    });
+
 
     mapboxgl.accessToken = 'pk.eyJ1IjoibmRpYXllanAiLCJhIjoiY2p4YWI1bDJpMDBsdzNxcWl3NjU3Znd4YSJ9.15lXtSdUn6ucBGQGs9rhTw';
 
@@ -1291,7 +1394,7 @@
         nbPieces: null,
     });
 
-    const brokenImages = ref([]);
+
 
     const paginateData = computed(() => {
         const start = (currentPage.value - 1) * itemsPerPage;
@@ -1309,7 +1412,7 @@
             const categoryMatch = !filters.value.category ||
                 property.categorie === filters.value.category;
             const transactionMatch = !filters.value.transaction ||
-                property.transation === filters.value.transaction;
+                property.transaction === filters.value.transaction;
             const priceMatch = !filters.value.maxPrice ||
                 parseFloat(property.price.replace(/[^\d]/g, "")) <=
                 filters.value.maxPrice;
@@ -1340,7 +1443,7 @@
 
 
     const initializeMap = () => {
-        if (map.value) return; // Prevent map reinitialization
+        if (map.value) return;
 
         const propLatLng = [selectedProperty.value.localisation.longitude, selectedProperty.value.localisation
             .latitude
@@ -1349,7 +1452,7 @@
         map.value = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v10',
-            center: propLatLng, // Use lng/lat from property
+            center: propLatLng,
             zoom: 15
         });
 
@@ -1371,8 +1474,28 @@
             .addTo(map.value);
     };
 
-    const markImageAsBroken = (index) => {
-        brokenImages.value.push(index); // Mark the image as broken
+    const addBrokenImage = (index) => {
+        if (!brokenImages.value.includes(index)) {
+            brokenImages.value.push(index);
+        }
+    };
+
+    const markImageAsBroken = async (index,imageUrl) => {
+         try {
+            // Vérifie si l'image est indisponible en utilisant une requête HEAD
+            const response = await axios.head(imageUrl);
+
+            if (response.status !== 200) {
+                // Si le serveur ne retourne pas un statut 200, marque l'image comme cassée
+                console.warn(`Image indisponible : ${imageUrl}`);
+                addBrokenImage(index);
+            }
+        } catch (error) {
+            // Si la requête échoue, marque l'image comme cassée
+            console.error(`Erreur pour l'image : ${imageUrl}`, error);
+            addBrokenImage(index);
+        }
+
     };
 
     const allCategories = computed(() => {
@@ -1381,10 +1504,12 @@
     });
 
     const filteredImages = computed(() => {
-        return selectedProperty.value.images.filter(
-            (image, index) =>
-            /\.(png|jpg)$/i.test(image) && !brokenImages.value.includes(index)
-        );
+        return selectedProperty.value.images.filter((image, index) => {
+            const isValidFormat = /\.(png|jpg)$/i.test(image);
+            const isNotBroken = !brokenImages.value.includes(index);
+            // Retourne les images valides et non cassées
+            return isValidFormat && isNotBroken;
+        });
     });
 
     const totalPages = computed(() => {
@@ -1415,7 +1540,6 @@
 
     const formatPrice = (price, locale = "fr-FR") => {
         if (!price) return "";
-        // Remove any non-numeric characters (including spaces, FCFA, etc.)
         const numericPrice = parseInt(price.replace(/[^\d]/g, ""), 10);
         const formattedNumber = new Intl.NumberFormat(locale).format(numericPrice);
         return `${formattedNumber} FCFA`;
@@ -1442,12 +1566,12 @@
     };
 
     const openLightbox = (index) => {
-        currentImageIndex.value = index; // Set the current image index
-        isLightboxOpen.value = true; //
+        currentImageIndex.value = index;
+        isLightboxOpen.value = true;
     };
 
     const closeLightbox = () => {
-        isLightboxOpen.value = false; // Hide the lightbox
+        isLightboxOpen.value = false;
 
     };
 
@@ -1462,13 +1586,104 @@
             (currentImageIndex.value + 1) % selectedProperty.value.images.length;
     };
 
+    const openContactForm = () => {
+        isContactFormOpen.value = true;
+    };
+
+    const closeContactForm = () => {
+        isContactFormOpen.value = false;
+        // Réinitialiser les données du formulaire
+        contactForm.value = {
+            name: "",
+            email: "",
+            message: "",
+        };
+    };
+
+
+    const validateField = (field) => {
+    switch (field) {
+        case "name":
+            if (!contactForm.value.name) {
+                formErrors.value.name = "Le nom est obligatoire.";
+            } else if (contactForm.value.name.length < 3) {
+                formErrors.value.name = "Le nom doit contenir au moins 3 caractères.";
+            } else {
+                formErrors.value.name = null;
+            }
+            break;
+
+        case "email":
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!contactForm.value.email) {
+                formErrors.value.email = "L'adresse e-mail est obligatoire.";
+            } else if (!emailRegex.test(contactForm.value.email)) {
+                formErrors.value.email = "Veuillez saisir une adresse e-mail valide.";
+            } else {
+                formErrors.value.email = null;
+            }
+            break;
+
+        case "message":
+            if (!contactForm.value.message) {
+                formErrors.value.message = "Le message est obligatoire.";
+            } else if (contactForm.value.message.length < 10) {
+                formErrors.value.message = "Le message doit contenir au moins 10 caractères.";
+            } else {
+                formErrors.value.message = null;
+            }
+            break;
+    }
+};
+const validateForm = () => {
+    validateField("name");
+    validateField("email");
+    validateField("message");
+
+    // Vérifie s'il y a des erreurs dans le formulaire
+    return !formErrors.value.name && !formErrors.value.email && !formErrors.value.message;
+};
+
+
+const submitContactForm = async (e) => {
+        e.preventDefault();
+         isSubmitting.value = true;
+        if (!validateForm()) {
+            return; // Arrête l'envoi si le formulaire n'est pas valide
+        }
+
+        try {
+             await axios.post("/contact-agency", {
+                property_id: selectedProperty.value.id,
+                reference: selectedProperty.value.reference,
+                location: `${selectedProperty.value.localisation.quartier || ''} - ${selectedProperty.value.localisation.ville || ''}`,
+                price: selectedProperty.value.price,
+                category: selectedProperty.value.categorie,
+                name: contactForm.value.name,
+                email: contactForm.value.email,
+                message: contactForm.value.message,
+            }).then((res) => {
+                alert("Votre message a été envoyé avec succès !");
+                closeContactForm();
+            }).catch ((err) => {
+                alert("Une erreur est survenue. Veuillez réessayerrrrr.");
+                console.log(err);
+            });
+        } catch (error) {
+                console.error("Erreur lors de l'envoi du message :", error);
+                alert("Une erreur est survenue. Veuillez réessayer.");
+        } finally{
+                isSubmitting.value = false;
+        }
+    };
+
     watch(
         filters,
         () => {
-            currentPage.value = 1; // Reset to first page when filters are changed
+            currentPage.value = 1;
             isFiltering.value = true;
             setTimeout(() => {
-                isFiltering.value = false; // Stop the loader when filtering is done
+                isFiltering.value = false;
             }, 500);
         }, {
             deep: true
@@ -1484,7 +1699,6 @@
             ];
             console.log(propLatLng)
 
-            // Update the map center and add a new marker
             map.value.setCenter(propLatLng);
 
             const popup = new mapboxgl.Popup({
@@ -1492,8 +1706,6 @@
             }).setText(
                 newProperty.localisation.quartier || newProperty.localisation.ville
             );
-
-            // Add a new marker at the new location
             new mapboxgl.Marker()
                 .setLngLat(propLatLng)
                 .setPopup(popup)
@@ -1511,17 +1723,11 @@
 
         try {
             const response = await axios.get(
-                "https://www3.pagesimmo.net/chercher_Annonces.ashx?C1=AN5C3D7Z7HEL&C_Rest=Avec_Fichiers%7C!%7Ctrue&Avec_Donnees_Complementaires%7C!%7Ctrue&Avec_Donnees_Confidentielles%7C!%7Ctrue&C_Rest=Bien_DU_AU%7C!%7C0,100000", {
-                    headers: {
-                        "Content-Type": "application/xml",
-                    },
-                }
+                "https://www3.pagesimmo.net/chercher_Annonces.ashx?C1=AN5C3D7Z7HEL&C_Rest=Avec_Fichiers%7C!%7Ctrue&Avec_Donnees_Complementaires%7C!%7Ctrue&Avec_Donnees_Confidentielles%7C!%7Ctrue&C_Rest=Bien_DU_AU%7C!%7C0,100000"
             );
             const xmlData = response.data;
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlData, "application/xml");
-
-            // Fonction pour convertir le XML en objet JSON
             const xmlToJson = (xml) => {
                 let obj = {};
                 if (xml.nodeType === 1) {
@@ -1559,17 +1765,16 @@
             const findCategoryInObject = (obj) => {
                 for (let key in obj) {
                     if (key.startsWith("CATEGORIE_")) {
-                        return key.replace("CATEGORIE_", ""); // Extract the category part
+                        return key.replace("CATEGORIE_", "");
                     } else if (typeof obj[key] === "object" && obj[key] !== null) {
                         const result = findCategoryInObject(obj[key]);
                         if (result) return result.replace("_", " ");
                     }
                 }
-                return null; // Return null if no category found
+                return null;
             };
 
             const jsonResult = xmlToJson(xmlDoc);
-            console.log(jsonResult);
             if (
                 jsonResult.ROOT &&
                 jsonResult.ROOT.DESTINATAIRE.AGENCE.BIEN &&
@@ -1590,13 +1795,12 @@
                                 ) {
                                     return fichier.FICHIER_JOINT.NOM_FICHIER[
                                         "#text"
-                                    ]; // URL de l'image
+                                    ];
                                 }
                                 return null;
                             })
                             .filter((img) => img !== null)
                             .slice(1);
-                        // Find the key that starts with 'CATEGORIE_'
                         let category = findCategoryInObject(data) || "AUTRE";
                         return {
                             id: data.REFERENCE ? data.REFERENCE["#text"] : "",
@@ -1652,7 +1856,6 @@
                                     "",
                             },
                             price: (() => {
-                                // Check if the price is in LOCATION or VENTE
                                 if (
                                     data.LOCATION &&
                                     data.LOCATION.LOYER_MENSUEL_TTC
@@ -1674,7 +1877,6 @@
                                 }
                             })(),
                             description: (() => {
-                                // Check if the price is in LOCATION or VENTE
                                 if (
                                     data.LOCATION &&
                                     data.LOCATION.TEXTES &&
@@ -1716,8 +1918,8 @@
                 selectedProperty.value = filteredProperties.value[0];
                 if (selectedProperty.value) {
                     setTimeout(() => {
-                        initializeMap(); // Initialize the map only after DOM is ready
-                    }, 300); // Add a slight delay to ensure the DOM is fully rendered
+                        initializeMap();
+                    }, 300);
                 }
             } else {
                 console.log("aucune donnée trouvée...");
@@ -1725,7 +1927,7 @@
         } catch (error) {
             console.log(error);
         } finally {
-            loading.value = false; // Stop loading after data is fetched
+            loading.value = false;
         }
     });
 </script>

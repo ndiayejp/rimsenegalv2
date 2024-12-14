@@ -23,7 +23,7 @@ export default {
             secondary: '#fff02a',
         },
         fontFamily:{
-            "hanken-grotest":["Hanken Grotesk", "sans-serif"]
+            "hanken-grotest":["Jost","Hanken Grotesk", "sans-serif"]
         },
     },
 

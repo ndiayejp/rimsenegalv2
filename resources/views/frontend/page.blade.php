@@ -1,6 +1,6 @@
 <x-layout>
     @section('title', $page->title)
-    <section class=" dark:bg-gray-900">
+    <section class="bg-white dark:bg-gray-900">
         <div
             class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
 
@@ -1023,9 +1023,9 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="py-8 px-4 mx-auto max-w-screen-xl text-justify  lg:py-12 lg:px-12 text-gray-600">
-            <div class="bg-white border rounded-lg p-5 text-gray-600">
-                <p class="mb-8 text-lg font-normal  lg:text-xl   dark:text-gray-400">
+        <div class="py-8  mx-auto max-w-7xl text-justify  lg:py-12  text-gray-600">
+            <div class="bg-white  text-gray-600">
+                <p class=" text-lg font-normal  lg:text-xl   dark:text-gray-400">
                     {!! $page->content !!}</p>
             </div>
         </div>

@@ -1,21 +1,20 @@
-<x-panel>
-    <div class="flex justify-between items-center mb-5 text-gray-500">
-        <span
-            class="bg-gray-50 text-primary text-xs font-medium inline-flex gap-2 items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-            <i class="fas fa-newspaper-o"></i> {{ $post->category->name }}
-        </span>
-        <span class="text-sm">Publié : {{ $post->created_at->diffForHumans() }}</span>
-    </div>
-    <h2
-        class="mb-2 text-2xl font-bold group-hover:text-primary transition-colors duration-1000  text-gray-900 dark:text-white">
-        <a href="{{ route('post.show', $post->getSlug()) }}">{{ Str::limit($post->name, 27) }}</a>
-    </h2>
-    <div class="mb-5 text-gray-500 dark:text-gray-400">{!! Str::limit($post->content, 65) !!}</div>
-    <div class="flex justify-end items-center">
-        <a href="{{ route('post.show', $post->getSlug()) }}"
-            class="inline-flex gap-2 border group-hover:bg-secondary group-hover:border-none border-primary rounded px-2 py-1.5 items-center font-medium text-primary dark:text-primary-500">
-            Lire la suite
-            <i class="fas fa-arrow-right-long"></i>
+<article class="overflow-hidden rounded-lg border transition hover:shadow-lg">
+    @if ($post->getMedia()->count() > 0)
+        <a href="{{ route('post.show', $post->getSlug()) }}" class="cursor-pointer">
+            <img alt="" src="{{ $post->getFirstMediaUrl('default', 'preview') }}"
+                class="h-56 w-full object-cover" />
         </a>
+    @endif
+    <div class="bg-white text-gray-600  p-4 sm:p-6">
+        <time datetime="2022-10-10" class="block text-right text-xs ">
+            {{ $post->created_at->diffForHumans() }} </time>
+
+        <a href="{{ route('post.show', $post->getSlug()) }}" class="cursor-pointer text-gray-600">
+            <h3 class="mt-0.5 text-lg font-bold">{{ Str::limit($post->name, 37) }}</h3>
+        </a>
+
+        <div class="mt-2   text-sm text-gray-600">
+            {!! Str::limit($post->content, 65) !!}
+        </div>
     </div>
-</x-panel>
+</article>

@@ -42,7 +42,8 @@ if($('#editor').trumbowyg){
       ['upload'],
       ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
       ['unorderedList', 'orderedList'],
-      ['horizontalRule']
+        ['horizontalRule'],
+      ['table', 'tableCellBackgroundColor', 'tableBorderColor']
     ],
     plugins:{
       upload:{
@@ -62,11 +63,10 @@ if($('#editor').trumbowyg){
         minSize: 64,
         step: 16,
         },
+
       tagClasses: {
-
-
         img: 'float-left',
-    }
+      }
     }
   })
 }

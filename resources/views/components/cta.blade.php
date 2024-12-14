@@ -563,11 +563,10 @@
             fill="#cbcbcb" />
     </svg>
 
-    <div class="relative z-10 py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center">
+    <div class="relative z-10 py-8 px-4 mx-auto max-w-7xl sm:py-16 lg:px-6">
+        <div class="mx-auto   text-center">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-white dark:text-white">Vous
-                voulez
-                devenir agent immobilier ?</h2>
+                envisagez une carrière dans l'immobilier?</h2>
             <p class="mb-6 font-light text-white dark:text-gray-400 md:text-lg">Nous vous aiderons à développer votre
                 carrière et votre croissance.</p>
             <a href="{{ route('contact') }}"

@@ -85,6 +85,7 @@
             <script src="{{ asset('js/trumbowyg/plugins/upload/trumbowyg.upload.min.js') }}"></script>
             <script src="{{ asset('js/trumbowyg/jquery-resizable.min.js') }}"></script>
             <script src="{{ asset('js/trumbowyg/plugins/resizimg/trumbowyg.resizimg.min.js') }}"></script>
+            <script src="{{ asset('js/trumbowyg/plugins/table/trumbowyg.table.min.js') }}"></script>
             <script src="{{ asset('js/editor.js') }}"></script>
         @endsection
     @endif

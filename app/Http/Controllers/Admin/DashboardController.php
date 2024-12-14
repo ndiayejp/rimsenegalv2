@@ -18,7 +18,7 @@ class DashboardController extends Controller
     {
         $posts = Post::notDraft()->count();
         $promotions = Promotion::notDraft()->count();
-        $users = User::count();
+        $users = User::paginate(10);
         $agencies = Agency::count();
         return view('admin.dashboard.index', compact('posts', 'promotions','users','agencies'));
     }

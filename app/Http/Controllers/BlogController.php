@@ -14,6 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
+         $categories = Category::all();
         if(isset(request()->keywords)){
         $words = trim(request()->keywords);
         $posts = Post::notDraft()->where('name','LIKE','%'.$words.'%')
@@ -22,11 +23,12 @@ class BlogController extends Controller
         $category = request()->category;
         $posts =
         Category::where('slug',$category)->firstOrFail()->posts()->paginate($this->limit)->withQueryString();
+
         } else {
              $posts = Post::notDraft()->published()->paginate($this->limit);
         }
 
-        return view('blog.index', compact('posts'));
+        return view('blog.index', compact('posts','categories'));
     }
 
 
@@ -39,12 +41,14 @@ class BlogController extends Controller
     {
         $post = Post::where('slug',$slug)->first();
         $categories = Category::all();
-         $mightAlsoLike = Post::notDraft()->where('slug','!=',$post->slug)->MightAlsoLike()->get();
+        $mightAlsoLike = Post::notDraft()->where('slug','!=',$post->slug)->MightAlsoLike()->get();
+        $previous = Post::notDraft()->where('id', '<', $post->id)->orderBy('id','desc')->first();
+        $next = Post::notDraft()->where('id', '>', $post->id)->orderBy('id','desc')->first();
         if(!$post){
             return redirect('posts.index')->with('error', 'aucun article trouvé');
         }
 
-        return view('blog.show', compact('post', 'categories', 'mightAlsoLike'));
+        return view('blog.show', compact('post', 'categories', 'mightAlsoLike','previous','next'));
     }
 
     /**

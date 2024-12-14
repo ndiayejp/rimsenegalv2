@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Nous contacter')
     <section class="bg-gray-100 dark:bg-gray-900 relative">
         <div
             class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">

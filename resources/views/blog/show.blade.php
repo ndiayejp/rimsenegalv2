@@ -2,7 +2,7 @@
     @section('title', $post->name)
     <section class="bg-graya-50 dark:bg-gray-900">
         <div
-            class="bg-primary overflow-hidden relative text-center text-3xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
+            class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-4xl lg:text-4xl dark:text-white">
             <div class=" mx-auto max-w-screen-xl text-center">{{ $post->name }}</div>
 
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
@@ -1468,52 +1468,51 @@
                     transform="translate(-76.10236 -224.19109)" fill="#ccc" />
             </svg>
         </div>
-        <div class="py-8  mx-auto max-w-screen-xl text-justify text-gray-600">
+        <div class="py-8 mx-auto max-w-7xl text-justify text-gray-600">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="col-span-2">
-                    <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="bg-white p-5 rounded-lg border border-gray-200">
                         {!! $post->content !!}
+                        <div class="flex items-center justify-between my-5">
+                            @if (isset($previous))
+                                <div class="prev-post">
+                                    <a href="{{ route('post.show', $post->getSlug()) }}" class="hover:text-primary">
+                                        <div class="title-with-link">
+                                            <span class="text-lg">
+                                                {{ __('Article précédent') }}
+                                            </span>
+                                            <h3 class="text-sm text-gray-400">
+                                                {{ Str::limit($previous->name, 30) }}
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                            @if (isset($next))
+                                <div class="next-post">
+                                    <a href="{{ route('post.show', $post->getSlug()) }}" class="hover:text-primary">
+                                        <div class="title-with-link">
+                                            <span class="text-lg">
+                                                {{ __('Article suivant') }}
+                                            </span>
+                                            <h3 class="text-sm text-gray-400">
+                                                {{ Str::limit($next->name, 30) }}
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-1">
                     <div class="text-left px-3 lg:px-0">
-                        <h3 class="text-xl font-bold mb-5">{{ __('Catégories') }}</h3>
-                        <ul class="shadow bg-white rounded-lg px-3 py-1.5">
-                            @foreach ($categories as $cat)
-                                @if ($cat->posts()->count() > 0)
-                                    <li class="py-1.5">
-                                        <a class="font-semibold hover:text-primary"
-                                            href="{{ route('blog.index', ['category' => $cat->slug]) }}">
-                                            {{ $cat->name }}
-                                            <span>({{ $cat->posts()->count() }})</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
+                        @include('partials.categories', ['categories' => $categories])
                     </div>
-                    <h3 class="text-xl font-bold my-5 px-3 lg:px-0">{{ __('Rechercher') }}</h3>
-                    <form action="{{ route('blog.search') }}" class="max-w-md mx-auto px-1 lg:px-0"
-                        method="GET">
-                        <label for="default-search"
-                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                </svg>
-                            </div>
-                            <input type="search" name="keywords"
-                                value="{{ old('keywords') }}@isset(request()->keywords){{ request()->keywords }}@endisset"
-                                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Votre recherche ici..." required />
-                            <button type="submit"
-                                class="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-secondary hover:text-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                Rechercher</button>
-                        </div>
-                    </form>
+                    @include('partials.search')
+                    <div class="my-5">
+                        @include('partials.alsolike')
+                    </div>
 
                 </div>
             </div>

@@ -13,7 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     @yield('script-css')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    {{-- <link href="{{ asset('build/assets/app-8550d759.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/app-73662a70.css') }}" rel="stylesheet">
+    <script src="{{ asset('build/assets/app-ddf76f61.js') }}"></script> --}}
 </head>
 
 <body class="bg-transparent text-white font-hanken-grotest">
@@ -294,11 +296,16 @@
     </div>
     @yield('script-js')
     <script>
-        new TomSelect("#input-tags", {
-            persist: false,
-            createOnBlur: true,
-            create: true
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.querySelector('#input-tags')
+            if (input) {
+                new TomSelect("#input-tags", {
+                    persist: false,
+                    createOnBlur: true,
+                    create: true
+                });
+            }
+        })
     </script>
 </body>
 

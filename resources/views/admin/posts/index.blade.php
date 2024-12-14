@@ -39,7 +39,8 @@
                                         class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $post->name }}</th>
                                     <td class="px-4 py-3">{{ $post->category->name }}</td>
-                                    <td class="px-4 py-3 max-w-[12rem] truncate"> {{ $post->created_at }}</td>
+                                    <td class="px-4 py-3 max-w-[12rem] truncate">
+                                        {{ $post->created_at->format('d-m-Y') }}</td>
                                     <td class="px-4 py-3">
                                         <label class="inline-flex items-center cursor-pointer">
                                             <input type="checkbox" value="" class="sr-only peer" checked disabled>

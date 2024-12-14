@@ -1033,7 +1033,7 @@
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                 <div class="mx-auto w-full ">
-                    <div class="space-y-6 text-gray-600 text-justify">
+                    <div class="space-y-6 text-gray-600 text-justify bg-white border p-4 rounded-lg mb-5">
                         {!! $promotion->content !!}
                     </div>
                     <div

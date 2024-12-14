@@ -74,6 +74,7 @@ class PostController extends Controller
             'categories' => Category::pluck('name', 'id'),
             'selectedValue' => $post->category_id,
             'editor' => 'trumbowyg',
+            'formattedDate'=>$post->created_at ? $post->created_at->format('Y-m-d') : ''
         ]);
     }
 
@@ -91,6 +92,7 @@ class PostController extends Controller
             'content' => $request->content,
             'status' => $request->input('status') ? 1 : 0,
             'user_id' => 1,
+            'created_at' => $request->created_at,
         ]);
         if ( $request->hasFile('thumb')) {
              $file = $request->file('thumb');

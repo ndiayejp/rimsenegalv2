@@ -60,6 +60,15 @@
                         </div>
                     </div>
                     <div class="mt-6 w-full  space-y-6 sm:mt-8 lg:mt-0 lg:max-w-xs xl:max-w-md">
+                        <div class="sm:col-span-2">
+                            @include('shared.input', [
+                                'label' => 'Date de création',
+                                'name' => 'created_at',
+                                'class' => 'p-2.5',
+                                'type' => 'date',
+                                'value' => $formattedDate,
+                            ])
+                        </div>
                         <div
                             class="space-y-4 rounded border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                             @include('shared.input', [

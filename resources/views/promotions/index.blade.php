@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Nos promotions immobilières')
     <section class="bg-gray-50 dark:bg-gray-900">
         <div
             class="bg-primary overflow-hidden relative text-center text-3xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-6xl dark:text-white">
@@ -1026,8 +1027,10 @@
                 @foreach ($promotions as $promo)
                     <div class="items-center bg-white rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                         <a href="{{ route('promotions.show', $promo->getSlug()) }}">
-                            <img class="w-full h-56 rounded-lg sm:rounded-none sm:rounded-l-lg"
-                                src="{{ $promo->getFirstMediaUrl() }}" alt="Bonnie Avatar">
+                            @if ($promo->getFirstMediaUrl())
+                                <img class="w-full h-56 rounded-lg sm:rounded-none sm:rounded-l-lg"
+                                    src="{{ $promo->getFirstMediaUrl() }}" alt="Bonnie Avatar">
+                            @endif
                         </a>
                         <div class="p-5">
                             <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">

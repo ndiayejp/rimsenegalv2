@@ -1,9 +1,13 @@
 import './bootstrap';
 
 import jQuery from 'jquery';
+window.$ = jQuery;
 
+import Alpine from "alpinejs";
 
-import Alpine from 'alpinejs';
+window.Alpine = Alpine;
+
+Alpine.start();
 
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 
@@ -19,11 +23,11 @@ app.component('property-card', PropertyCard);
 
 app.mount("#app");
 
-window.Alpine = Alpine;
-window.$ = jQuery;
 
 
-Alpine.start();
+
+
+
 
 
 

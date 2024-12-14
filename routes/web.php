@@ -38,6 +38,7 @@ Route::post('/articles',[PostController::class,'index'])->name('blog.search');
 Route::get('/promotions', [ListingController::class, 'promos'])->name('promotions.index');
 Route::get('/promotions/{promotion}', [ListingController::class,'showPromo'])->name('promotions.show');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
+Route::post('/contact-agency', [HomeController::class, 'sendContactForm'])->name('property.contact');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','auth.isAdmin'])->group(function () {
     Route::resource('promotions', PromotionController::class);
@@ -57,9 +58,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','auth.isAdmin'])->gro
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
-
-
 
 require __DIR__.'/auth.php';
