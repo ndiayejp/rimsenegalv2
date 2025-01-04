@@ -3,9 +3,8 @@
     <section class="bg-white dark:bg-gray-900">
         <div
             class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
-
             {{ $page->title }}
-            <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
+            <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto" xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
                 <path d="M105.42222,619.66535a17.16536,17.16536,0,0,1,34.33071,0"
@@ -447,7 +446,7 @@
                     d="M1059.4752,616.55672a.4618.4618,0,0,1-.302-.11191l-5.56714-4.77814a.46394.46394,0,1,1,.60437-.704l5.56714,4.77814a.46393.46393,0,0,1-.30241.816Z"
                     transform="translate(-76.10236 -224.19109)" fill="#ccc" />
             </svg>
-            <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
+            <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto" xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
                 <path d="M105.42222,619.66535a17.16536,17.16536,0,0,1,34.33071,0"
@@ -889,7 +888,7 @@
                     d="M1059.4752,616.55672a.4618.4618,0,0,1-.302-.11191l-5.56714-4.77814a.46394.46394,0,1,1,.60437-.704l5.56714,4.77814a.46393.46393,0,0,1-.30241.816Z"
                     transform="translate(-76.10236 -224.19109)" fill="#ccc" />
             </svg>
-            <svg class="absolute opacity-10 bottom-0 hidden md:inline-flex left-20 h-72 w-auto "
+            <svg class="absolute opacity-10 bottom-0 hidden md:inline-flex left-20 h-72 w-auto"
                 xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="832.02831" height="646"
                 viewBox="0 0 832.02831 646" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <path id="efdf5e1f-6b90-40c1-9274-afa2b16f39be-199" data-name="Path 482"
@@ -1023,9 +1022,9 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="py-8  mx-auto max-w-7xl text-justify  lg:py-12  text-gray-600">
+        <div class="py-8 px-4 lg:py-8 lg:px-6 mx-auto max-w-screen-2xl text-justify text-gray-600">
             <div class="bg-white  text-gray-600">
-                <p class=" text-lg font-normal  lg:text-xl   dark:text-gray-400">
+                <p class="text-lg font-normal lg:text-xl dark:text-gray-400">
                     {!! $page->content !!}</p>
             </div>
         </div>

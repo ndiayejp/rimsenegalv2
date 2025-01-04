@@ -1,14 +1,12 @@
 <x-mail::message>
     # Nouveau message sujet: {{ $contactData['objet'] }}
 
-    ## De: {{ $contactData['name'] }}
+    De: {{ $contactData['name'] }}
 
-    ## Email: {{ $contactData['email'] }}
+    Email: {{ $contactData['email'] }}
 
-    ## Message
-    {{ $contactData['message'] }}
+    Message: {{ $contactData['content'] }}
 
 
-    Thanks,<br>
-    {{ config('app.name') }}
+    Cordialement,
 </x-mail::message>

@@ -1022,32 +1022,25 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
-            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-8 lg:px-6">
+            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
                 @foreach ($promotions as $promo)
-                    <div class="items-center bg-white rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-                        <a href="{{ route('promotions.show', $promo->getSlug()) }}">
-                            @if ($promo->getFirstMediaUrl())
-                                <img class="w-full h-56 rounded-lg sm:rounded-none sm:rounded-l-lg"
-                                    src="{{ $promo->getFirstMediaUrl() }}" alt="Bonnie Avatar">
-                            @endif
-                        </a>
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="{{ route('promotions.show', $promo->getSlug()) }}">{{ $promo->title }}</a>
-                            </h3>
-                            <div class="mt-3 mb-4  text-gray-600 dark:text-gray-400">{!! Str::limit($promo->content, 85) !!}
+                    <article class="bg-white overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+                        @if ($promo->getFirstMediaUrl())
+                            <a href="{{ route('promotions.show', $promo->getSlug()) }}">
+                                <img alt="" src="{{ $promo->getFirstMediaUrl() }}"
+                                    class="h-56 w-full object-cover" /></a>
+                        @endif
+                        <div class="bg-white p-4 sm:p-6 grid grid-rows-subgrid">
+                            <a href="#">
+                                <h3 class="mt-0.5 text-lg text-gray-900">{{ $promo->title }}
+                                </h3>
+                            </a>
+                            <div class="mt-3 mb-4  text-gray-600 dark:text-gray-400">
+                                {!! Str::limit($promo->content, 85) !!}
                             </div>
-                            <ul class="flex space-x-4 sm:mt-0">
-                                <li>
-                                    <a href="{{ route('promotions.show', $promo->getSlug()) }}"
-                                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                                        En voir +
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
-                    </div>
+                    </article>
                 @endforeach
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -16,20 +17,29 @@ class ContactController extends Controller
         return view('contact.index',compact('agencies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-        public function create()
-    {
-        //
-    }
+
 
     /**
-     * Store a newly created resource in storage.
+     * contact form
      */
-    public function store(Request $request)
+    public function submitContactForm(Request $request)
     {
-        //
+       $validatedData = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'email' => 'required|email|max:255',
+            'objet' => 'required|string|min:3|max:255',
+            'content' => 'required|string|min:10',
+       ]);
+
+       try {
+            Mail::to('ndiayejp@gmail.com') // Adresse de réception
+            ->send(new \App\Mail\ContactUsMail($validatedData));
+
+            return redirect()->back()->with('success', 'Votre message a été envoyé avec succès.');
+       } catch (\Exception $e) {
+            dd($e);
+            return redirect()->back()->with('error', 'Une erreur est survenue. Veuillez réessayer.');
+       }
     }
 
 

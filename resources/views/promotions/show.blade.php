@@ -3,12 +3,11 @@
     <section class="bg-gray-50 dark:bg-gray-900 relative">
         <div
             class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
-            <div class=" mx-auto max-w-screen-xl text-center">{{ $promotion->title }}</div>
+            <div class=" mx-auto max-w-screen-2xl text-center">{{ $promotion->title }}</div>
             @if ($promotion->hasMedia('pdfs'))
                 <div><a href="{{ $promotion->getFirstMediaUrl('pdfs') }}" target="_blank"
-                        class="text-white inline-block text-xl font-normal hover:text-secondary" download><i
-                            class="fas fa-file-download"></i> Télécharger les
-                        plans</a></div>
+                        class="text-white inline-block text-xl font-normal hover:text-secondary" download>
+                        <i class="fas fa-file-download"></i> Télécharger les plans</a></div>
             @endif
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
@@ -1029,10 +1028,10 @@
             </svg>
         </div>
     </section>
-    <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900">
-        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <section class="bg-gray-50 antialiased dark:bg-gray-900">
+        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-10 lg:px-6">
             <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-                <div class="mx-auto w-full ">
+                <div class="mx-auto w-full">
                     <div class="space-y-6 text-gray-600 text-justify bg-white border p-4 rounded-lg mb-5">
                         {!! $promotion->content !!}
                     </div>
@@ -1059,8 +1058,6 @@
                         </div>
                     @endif
                 </div>
-
-
             </div>
         </div>
     </section>

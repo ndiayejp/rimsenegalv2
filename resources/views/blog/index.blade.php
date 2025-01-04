@@ -1022,7 +1022,7 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="py-8 px-4 mx-auto max-w-7xl lg:py-16 lg:px-0">
+        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-8 lg:px-6">
             <div class="grid gap-8 md:grid-cols-3">
                 <div class="col-span-2 ">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -1031,9 +1031,7 @@
                         @empty
                             <div
                                 class="bg-white px-4 py-5 rounded-lg border flex items-center justify-center text-gray-600 font-bold">
-                                Aucun résulat pour
-                                votre
-                                recherche </div>
+                                Aucun résulat pour votre recherche </div>
                         @endforelse
                     </div>
                     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 mt-4"
@@ -1047,7 +1045,6 @@
                         @include('partials.categories')
                     </div>
                     @include('partials.search')
-
                 </div>
             </div>
 

@@ -1032,7 +1032,7 @@
                             <i class="fas fa-map-pin text-primary"></i>
                         </div>
                         <input v-model="filters.city" type="text"
-                            class="bg-white font-bold border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                             placeholder="Dans quelle ville ? Quartier ?" />
                     </div>
                 </div>
@@ -1041,7 +1041,7 @@
                     <div class="flex items-center space-x-3 w-full md:w-auto">
                         <div>
                             <select v-model="filters.category"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                                 <option value="">Familles de biens</option>
                                 <option :value="category" v-for="category in allCategories" :key="category">
                                     {{ category }}
@@ -1050,7 +1050,7 @@
                         </div>
                         <div>
                             <select v-model="filters.transaction"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                                 <option value="">Type de recherche</option>
                                 <option value="Location">Location</option>
                                 <option value="Vente">Vente</option>
@@ -1058,12 +1058,12 @@
                         </div>
                         <div>
                             <input v-model="filters.maxPrice" type="number" name="price" min="0"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                                 placeholder="Budget maximum" />
                         </div>
                         <div>
                             <input v-model="filters.nbPieces" type="number" name="nbpiece" min="0"
-                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                                 placeholder="Nombre de pièces" />
                         </div>
                     </div>
@@ -1072,7 +1072,7 @@
         </div>
         <div class="text-gray-600 py-5 flex justify-end">
             <select @onchange="filteredProperties" v-model="sortOption"
-                class="text-gray-600 font-bold rounded-lg border text-sm border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                class="text-gray-600 font-bold rounded-lg border text-sm border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                 <option value="">Trier par:</option>
                 <option value="priceAsc">Prix croissant</option>
                 <option value="priceDesc">Prix décroissant</option>
@@ -1590,14 +1590,25 @@
         isContactFormOpen.value = true;
     };
 
+    const resetContactForm = () => {
+    contactForm.value = {
+        name: "",
+        email: "",
+        message: "",
+    };
+
+    formErrors.value = {
+        name: null,
+        email: null,
+        message: null,
+    };
+};
+
+
     const closeContactForm = () => {
         isContactFormOpen.value = false;
         // Réinitialiser les données du formulaire
-        contactForm.value = {
-            name: "",
-            email: "",
-            message: "",
-        };
+       resetContactForm()
     };
 
 
@@ -1649,6 +1660,7 @@ const submitContactForm = async (e) => {
         e.preventDefault();
          isSubmitting.value = true;
         if (!validateForm()) {
+            isSubmitting.value = false;
             return; // Arrête l'envoi si le formulaire n'est pas valide
         }
 

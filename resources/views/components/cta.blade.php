@@ -563,15 +563,19 @@
             fill="#cbcbcb" />
     </svg>
 
-    <div class="relative z-10 py-8 px-4 mx-auto max-w-7xl sm:py-16 lg:px-6">
+    <div class="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl sm:py-16 lg:px-6">
         <div class="mx-auto   text-center">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-white dark:text-white">Vous
                 envisagez une carrière dans l'immobilier?</h2>
-            <p class="mb-6 font-light text-white dark:text-gray-400 md:text-lg">Nous vous aiderons à développer votre
-                carrière et votre croissance.</p>
+            <p class="mb-6 font-light text-white dark:text-gray-400 md:text-lg">Rejoignez-nous et construisez votre
+                avenir dans l'immobilier !</p>
             <a href="{{ route('contact') }}"
-                class="text-gray-800 inline-flex items-center gap-2 bg-secondary hover:bg-gray-800 hover:text-white focus:ring-4 focus:ring-primary-300 font-medium rounded text-md px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Nous
-                contacter <i class="fas fa-arrow-right-long"></i></a>
+                class="group text-gray-800 inline-flex items-center gap-2 bg-secondary hover:bg-gray-800 hover:text-white focus:ring-4 focus:ring-primary-300 font-medium rounded text-md px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Nous
+                contacter <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg></a>
         </div>
     </div>
 </section>

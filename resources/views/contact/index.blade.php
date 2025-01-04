@@ -4,7 +4,7 @@
         <div
             class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
             <div class="mx-auto max-w-screen-xl text-center relative z-10">Nous Contacter</div>
-            <div class="text-xl font-normal">Où nous trouver</div>
+            <div class="text-xl font-normal">Où nous trouver?</div>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1026,20 +1026,74 @@
     </section>
     <!-- Contact Us -->
 
-    <div class="py-8 px-4 md:px-0 mx-auto max-w-screen-xl text-justify  text-gray-600">
-        <div class="grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
+    <div class="py-8 px-4 lg:py-8 lg:px-6 mx-auto max-w-screen-2xl text-justify  text-gray-600">
+        <div class="px-5 xl:px-0 grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
             <!-- Card -->
-            <div class="flex flex-col bg-white border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
-                <livewire:contact-form />
+            <div class="flex flex-col bg-white shadow rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
+                <div>
+                    @include('shared.flash')
+                    <form action="{{ route('contact.form') }}" method="POST">
+                        @csrf
+                        <div class="grid gap-4">
+                            <!-- Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                @include('shared.input', [
+                                    'label' => 'Nom',
+                                    'name' => 'name',
+                                    'class' => 'p-2.5',
+                                    'placeholder' => 'Nom/Prénom',
+                                    'wire:model' => 'name',
+                                ])
+
+                                @include('shared.input', [
+                                    'label' => 'Email',
+                                    'name' => 'email',
+                                    'type' => 'email',
+                                    'class' => 'p-2.5',
+                                    'placeholder' => 'Email',
+                                    'wire:model' => 'email',
+                                ])
+                            </div>
+                            <!-- End Grid -->
+                            @include('shared.input', [
+                                'label' => 'Objet de la demande',
+                                'name' => 'objet',
+                                'class' => 'p-2.5',
+                                'placeholder' => 'service concerné',
+                                'wire:model' => 'objet',
+                            ])
+
+                            @include('shared.input', [
+                                'label' => 'Contenu',
+                                'name' => 'content',
+                                'wire:model' => 'content',
+                                'type' => 'textarea',
+                                'class' => 'p-2.5',
+                                'placeholder' => 'contenu du message',
+                            ])
+                        </div>
+                        <!-- End Grid -->
+                        <div class="mt-4 grid">
+                            <button type="submit"
+                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded border border-transparent bg-primary text-white hover:bg-secondary hover:text-gray-600 focus:outline-none focus:bg-primary focus:text-white disabled:opacity-50 disabled:pointer-events-none">Envoyer
+                                votre message</button>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <p class="text-sm text-gray-500 dark:text-neutral-500">
+                                Vous avez des questions, nos commerciaux vous répondrons dans les plus brefs délais
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!-- End Card -->
 
             <div class="divide-y divide-gray-200 dark:divide-neutral-800">
                 @foreach ($agencies as $agency)
                     <!-- Icon Block -->
-                    <div class="flex gap-x-7 py-6">
-                        <i class="fas fa-house-crack mt-1.5"></i>
-                        <div class="grow">
+                    <div class="flex items-center gap-x-7 py-6">
+                        <i class="fas fa-house-crack mt-1.5 text-primary"></i>
+                        <div class="grow shadow bg-white rounded-lg p-5">
                             <h3 class="font-semibold text-gray-800 dark:text-neutral-200">{{ $agency->name }}</h3>
                             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-500"> {{ $agency->address }}
                             </p>
@@ -1048,13 +1102,10 @@
                     </div>
                 @endforeach
                 <!-- End Icon Block -->
-
-
-
                 <!-- Icon Block -->
-                <div class=" flex gap-x-7 py-6">
-                    <i class="fas fa-clock mt-1.5"></i>
-                    <div class="grow">
+                <div class=" flex items-center gap-x-7 py-6">
+                    <i class="fas fa-clock mt-1.5 text-primary"></i>
+                    <div class="grow ">
                         <h3 class="font-semibold text-gray-800 dark:text-neutral-200">Horaires d’ouverture</h3>
                         <p class="mt-1 text-sm text-gray-500 dark:text-neutral-500">Du lundi au Vendredi 08h à 13h et
                             de 14h à 17h.</p>
@@ -1062,11 +1113,7 @@
                     </div>
                 </div>
                 <!-- End Icon Block -->
-
-
             </div>
         </div>
     </div>
-
-    <!-- End Contact Us -->
 </x-layout>

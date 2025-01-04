@@ -17,12 +17,10 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" />
-    @livewireStyles
-    @livewireScripts
 
-    @yield('styles')
-    @yield('scripts')
-
+    {{-- <link href="{{ asset('build/assets/app-73662a70.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/app-279b99f9.css') }}" rel="stylesheet">
+    <script src="{{ asset('build/assets/app-4514722f.js') }}"></script> --}}
     {{-- @php
         $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
     @endphp
@@ -35,20 +33,19 @@
             <link rel="stylesheet" href="/build/{{ $manifest['resources/js/app.js']['css'][0] }}">
         @endif
     @endif --}}
-
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @yield('styles')
 </head>
 
 <body class="bg-gray-50 text-white font-hanken-grotest">
     <div>
-        <nav class="bg-secondary text-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
+        <nav
+            class="bg-secondary text-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 sticky top-0 z-50">
+            <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-4 px-4 lg:py-3 lg:px-6">
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="{{ Vite::asset('resources/images/logo.png') }}" class="w-16" />
+                    <img src="{{ asset('images/logo.png') }}" class="w-16" />
                     <span
-                        class="hidden lg:block self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
+                        class="hidden xl:block self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
                         Immobilière Mugnier</span>
                 </a>
                 <button data-collapse-toggle="navbar-multi-level" type="button"
@@ -63,12 +60,8 @@
                 </button>
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul
-                        class="flex flex-col font-medium p-4  md:space-x-5 rtl:space-x-reverse md:flex-row   dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li>
-                            <a href="{{ route('home') }}"
-                                class="block py-2 px-3  text-gray-800 hover:text-primary  md:dark:text-primary dark:primary md:dark:bg-transparent"
-                                aria-current="page"><i class="fas fa-home"></i></a>
-                        </li>
+                        class="flex flex-col text-sm lg:text-lg md:text-md font-medium md:space-x-2 rtl:space-x-reverse md:flex-row dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
                         <?php $menus = \App\Models\Menu::with('children')->topLevel()->get(); ?>
 
                         @foreach ($menus as $menu)
@@ -116,16 +109,16 @@
                         </li>
                         <li>
                             <a href="{{ route('promotions.index') }}"
-                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700   dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Promotions
+                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Promotions
                                 immobilières</a>
                         </li>
                         <li>
                             <a href="{{ route('contact') }}"
-                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700   dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
                         </li>
                         <li>
                             <a href="https://regie-immobiliere-mugnier.crypto-extranet.com/connexion/" target="_blank"
-                                class="bg-primary text-white inline-block py-2 px-3 rounded-lg font-bold   hover:text-white   hover:bg-gray-700   dark:text-white   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Extranet</a>
+                                class="bg-primary text-white inline-block py-2 px-3 rounded font-bold hover:text-white hover:bg-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Extranet</a>
                         </li>
                     </ul>
                 </div>
@@ -136,6 +129,7 @@
         </main>
     </div>
     <x-footer></x-footer>
+
     <script>
         var toTopButton = document.getElementById("to-top-button");
 
@@ -156,6 +150,7 @@
             };
         }
     </script>
+    @yield('scripts')
 </body>
 
 </html>

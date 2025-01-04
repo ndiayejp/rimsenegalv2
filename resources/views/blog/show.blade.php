@@ -3,7 +3,7 @@
     <section class="bg-graya-50 dark:bg-gray-900">
         <div
             class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-4xl lg:text-4xl dark:text-white">
-            <div class=" mx-auto max-w-screen-xl text-center">{{ $post->name }}</div>
+            <div class=" mx-auto max-w-screen-2xl text-center">{{ $post->name }}</div>
 
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
@@ -1468,7 +1468,7 @@
                     transform="translate(-76.10236 -224.19109)" fill="#ccc" />
             </svg>
         </div>
-        <div class="py-8 mx-auto max-w-7xl text-justify text-gray-600">
+        <div class="mx-auto max-w-screen-2xl text-justify text-gray-600 py-8 px-4 lg:py-8 lg:px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="col-span-2">
                     <div class="bg-white p-5 rounded-lg border border-gray-200">

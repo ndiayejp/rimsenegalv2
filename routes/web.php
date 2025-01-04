@@ -39,6 +39,7 @@ Route::get('/promotions', [ListingController::class, 'promos'])->name('promotion
 Route::get('/promotions/{promotion}', [ListingController::class,'showPromo'])->name('promotions.show');
 Route::get('/contact',[ContactController::class,'index'])->name('contact');
 Route::post('/contact-agency', [HomeController::class, 'sendContactForm'])->name('property.contact');
+Route::post('/contact-form', [ContactController::class, 'submitContactForm'])->name('contact.form');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','auth.isAdmin'])->group(function () {
     Route::resource('promotions', PromotionController::class);

@@ -1,21 +1,19 @@
 <footer class="p-4   sm:p-6 dark:bg-gray-800 relative bg-gray-800">
     <div class="absolute bg-center bg-no-repeat top-0 left-0  h-72 w-full z-0"
         style="background-image: url('{{ asset('images/pattern-img.png') }}');opacity:0.06"></div>
-    <div class="mx-auto max-w-screen-xl relative z-10">
+    <div class="mx-auto max-w-screen-2xl relative z-10 py-8 px-4 lg:py-3 lg:px-6">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
-                <a href="https://flowbite.com" class="flex items-center justify-center">
+                <a href="#" class="flex items-center justify-center md:justify-start lg:justify-center">
                     <img src="{{ asset('images/logo.png') }}" class="w-20" />
-
-
                 </a>
                 <h3 class="my-4 font-bold text-xl">Nous suivre sur les réseaux sociaux</h3>
                 <div class="flex space-x-6 justify-center">
                     <a href="#" class="text-gray-200 hover:text-secondary dark:hover:text-white">
-                        <i class="fa-brands fa-square-facebook"></i>
+                        <i class="fa-brands fa-square-facebook fa-2x"></i>
                     </a>
                     <a href="#" class="text-gray-500 hover:text-secondary dark:hover:text-white">
-                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-instagram fa-2x"></i>
                     </a>
 
                 </div>
@@ -76,7 +74,7 @@
     </div>
     <!-- Back to top button -->
     <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-primary hover:bg-secondary text-white hover:text-primary text-lg font-semibold transition-colors duration-300">
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded shadow-md bg-primary hover:bg-secondary text-white hover:text-primary text-lg font-semibold transition-colors duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
             <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
         </svg>

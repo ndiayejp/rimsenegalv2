@@ -11,11 +11,20 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    @if (isset($manifest['resources/js/app.js']))
+        <script type="module" src="/build/{{ $manifest['resources/js/app.js']['file'] }}"></script>
+        @if (isset($manifest['resources/css/app.css']['file']))
+            <link rel="stylesheet" href="/build/{{ $manifest['resources/css/app.css']['file'] }}">
+        @endif
+        @if (isset($manifest['resources/js/app.js']['css'][0]))
+            <link rel="stylesheet" href="/build/{{ $manifest['resources/js/app.js']['css'][0] }}">
+        @endif
+    @endif
     @yield('script-css')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- <link href="{{ asset('build/assets/app-8550d759.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/assets/app-73662a70.css') }}" rel="stylesheet">
-    <script src="{{ asset('build/assets/app-ddf76f61.js') }}"></script> --}}
 </head>
 
 <body class="bg-transparent text-white font-hanken-grotest">
@@ -294,7 +303,7 @@
             {{ $slot }}
         </main>
     </div>
-    @yield('script-js')
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const input = document.querySelector('#input-tags')
@@ -307,6 +316,7 @@
             }
         })
     </script>
+    @yield('script-js')
 </body>
 
 </html>

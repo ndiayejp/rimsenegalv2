@@ -1,63 +1,126 @@
-<section class="bg-gray-50 dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <x-section-heading>
-            <x-slot:title>Choisissez l’agence RIM Sénégal?</x-slot:title>
-            Comme plus de 30 000 clients en 20 ans !
-        </x-section-heading>
-        <div class="space-y-8 my-5 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-            <div class="bg-white p-5 rounded-lg shadow">
-                <h3 class="my-5 text-center text-xl font-bold text-primary uppercase dark:text-white">Acheter
-                    une propriété</h3>
-                <div class="flex justify-center">
-                    <div
-                        class="flex p-3 justify-center items-center w-32 h-32 rounded-full  lg:h-52 lg:w-52 dark:bg-primary-900">
-                        <img src="/images/buy.svg" alt="">
-                    </div>
-                </div>
-
-                <p class="text-gray-600 dark:text-gray-400 text-justify my-5">Parce qu'acheter votre bien, maison ou
-                    appartement, demande
-                    un investissement important, votre agence vous accompagne pour optimiser vos recherches.</p>
-            </div>
-            <div class="bg-white p-5 rounded-lg shadow">
-                <h3 class="my-5 text-center text-xl font-bold text-primary uppercase dark:text-white">Vendre un
-                    bien</h3>
-                <div class="flex justify-center">
-                    <div
-                        class="flex p-3 justify-center items-center  w-32 h-32 rounded-full   lg:h-52 lg:w-52 dark:bg-primary-900">
-                        <img src="/images/key.svg" alt="">
-                    </div>
-                </div>
-
-                <p class="text-gray-600 dark:text-gray-400 text-justify my-5">Bénéficiez d'un accompagnement et des
-                    conseils
-                    d'un
-                    professionnel de l'immobilier ayant une connaissance approfondie du marché immobilier local.</p>
-            </div>
-            <div class="bg-white p-5 rounded-lg shadow">
-                <h3 class="my-5 text-center text-xl font-bold text-primary uppercase dark:text-white">Louer un bien
-                </h3>
-                <div class="flex justify-center">
-                    <div
-                        class="flex justify-center items-center w-32 h-32 rounded-full  lg:h-52 lg:w-52 dark:bg-primary-900">
-                        <img src="/images/house.svg" alt="house">
-                    </div>
-                </div>
-
-                <p class="text-gray-600 dark:text-gray-400 text-justify my-5">Quel que soit votre besoin de location,
-                    nos
-                    équipes sont à
-                    vos côtés tout au long de votre de projet, en ligne ou en agence avec des solutions simples et
-                    concrètes.</p>
-            </div>
-
-        </div>
-        <div class="flex justify-center py-5">
-            <a href="/nos-biens"
-                class="bg-secondary hover:bg-primary hover:text-white flex items-center gap-2 text-gray-800 rounded px-3 py-2.5 font-semibold">Voir
-                toutes nos
-                annonces <i class="fas fa-arrow-right-long"></i></a>
+<section class="relative overflow-hidden bg-gray-50 py-5 sm:py-10">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 -z-10">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40">
         </div>
     </div>
 
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                Choisissez l'agence RIM Sénégal!
+            </h2>
+            <p class="mt-4 text-lg leading-8 text-gray-600">
+                Votre partenaire de confiance pour tous vos projets immobiliers au Sénégal
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="mx-auto mt-10 grid max-w-lg gap-8 sm:mt-10 md:max-w-none md:grid-cols-2 lg:grid-cols-3">
+            <!-- Service Card 1 -->
+            <div
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                </div>
+
+                <div class="relative z-10">
+                    <div class="mb-8 flex justify-center">
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
+                            </div>
+                            <img src="/images/buy.svg" alt="Acheter"
+                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                        </div>
+                    </div>
+
+                    <h3
+                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
+                        Acheter une propriété
+                    </h3>
+
+                    <p class="text-center text-gray-600">
+                        Découvrez des biens qui répondent à vos rêves et besoins. Nous vous accompagnons pour
+                        concrétiser votre projet immobilier.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                </div>
+
+                <div class="relative z-10">
+                    <div class="mb-8 flex justify-center">
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
+                            </div>
+                            <img src="/images/key.svg" alt="Vendre"
+                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                        </div>
+                    </div>
+
+                    <h3
+                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
+                        Vendre un bien
+                    </h3>
+
+                    <p class="text-center text-gray-600">
+                        Vendez votre bien rapidement et au meilleur prix. Notre expertise vous garantit une transaction
+                        réussie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ">
+                </div>
+
+                <div class="relative z-10">
+                    <div class="mb-8 flex justify-center">
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
+                            </div>
+                            <img src="/images/house.svg" alt="Louer"
+                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                        </div>
+                    </div>
+
+                    <h3
+                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
+                        Louer un bien
+                    </h3>
+
+                    <p class="text-center text-gray-600">
+                        Trouvez la location idéale ou mettez votre bien en valeur. Nous simplifions chaque étape pour
+                        vous.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-10 flex justify-end">
+            <a href="/nos-biens"
+                class="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary hover:bg-secondary hover:text-gray-800 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg">
+                <span>Voir toutes nos annonces</span>
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
 </section>
