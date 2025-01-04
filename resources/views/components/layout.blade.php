@@ -49,7 +49,7 @@
                         Immobilière Mugnier</span>
                 </a>
                 <button data-collapse-toggle="navbar-multi-level" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-white focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded md:hidden hover:bg-white focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-multi-level" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -81,7 +81,7 @@
 
                                     <!-- Dropdown menu -->
                                     <div id="dropdownNavbar{{ $menu->id }}"
-                                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                             aria-labelledby="dropdownLargeButton{{ $menu->id }}">
                                             @foreach ($menu->children as $submenu)

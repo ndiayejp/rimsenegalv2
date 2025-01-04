@@ -8,7 +8,7 @@
             de location de biens immobiliers.</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 pb-28">
             <a href="/pages/qui-sommes-nous"
-                class="group inline-flex justify-center gap-2 items-center py-3 px-5 text-base font-medium text-center text-white rounded bg-transparent border hover:border-transparent hover:bg-secondary hover:text-gray-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                class="group inline-flex justify-center gap-2 items-center py-3 px-5 text-base font-medium text-center text-white rounded-full bg-transparent border hover:border-transparent hover:bg-secondary hover:text-gray-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 A propos <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -17,7 +17,7 @@
 
             </a>
             <a href="/nos-biens"
-                class="group inline-flex justify-center gap-2  bg-primary hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded hover:bg-secondary focus:ring-4 focus:ring-gray-400">
+                class="group inline-flex justify-center gap-2  bg-primary hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-full hover:bg-secondary focus:ring-4 focus:ring-gray-400">
                 Voir nos biens <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -1022,18 +1022,35 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-8 lg:px-6">
-            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
+        <div class="mx-auto max-w-screen-2xl py-10 px-4  lg:px-6">
+            <div class="grid gap-8  md:grid-cols-3">
                 @foreach ($promotions as $promo)
-                    <article class="bg-white overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+                    <article
+                        class="group relative bg-white overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
                         @if ($promo->getFirstMediaUrl())
-                            <a href="{{ route('promotions.show', $promo->getSlug()) }}">
+                            <a href="{{ route('promotions.show', $promo->getSlug()) }}"
+                                class="relative block overflow-hidden">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+                                </div>
                                 <img alt="" src="{{ $promo->getFirstMediaUrl() }}"
-                                    class="h-56 w-full object-cover" /></a>
+                                    class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                    style="aspect-ratio: 16/9" />
+                                <div
+                                    class="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-secondary opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </a>
                         @endif
                         <div class="bg-white p-4 sm:p-6 grid grid-rows-subgrid">
                             <a href="#">
-                                <h3 class="mt-0.5 text-lg text-gray-900">{{ $promo->title }}
+                                <h3
+                                    class="mt-0.5 text-lg text-gray-900 decoration-primary decoration-4 group-hover:underline">
+                                    {{ Str::limit($promo->title, 42) }}
                                 </h3>
                             </a>
                             <div class="mt-3 mb-4  text-gray-600 dark:text-gray-400">

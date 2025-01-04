@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,9 +23,12 @@ class HomeController extends Controller
 
     public function show($slug)
     {
+        $categories = Category::all();
+
+
         $page = Page::published()->where('slug', $slug)->firstOrFail();
 
-        return view('frontend.page', compact('page'));
+        return view('frontend.page', compact('page', 'categories'));
     }
 
     public function sendContactForm(Request $request){

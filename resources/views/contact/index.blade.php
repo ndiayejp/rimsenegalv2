@@ -1026,17 +1026,17 @@
     </section>
     <!-- Contact Us -->
 
-    <div class="py-8 px-4 lg:py-8 lg:px-6 mx-auto max-w-screen-2xl text-justify  text-gray-600">
+    <div class="py-10 px-4 lg:px-6 mx-auto max-w-screen-2xl text-justify text-gray-600">
         <div class="px-5 xl:px-0 grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
             <!-- Card -->
-            <div class="flex flex-col bg-white shadow rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
+            <div class="flex flex-col bg-white border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
                 <div>
                     @include('shared.flash')
                     <form action="{{ route('contact.form') }}" method="POST">
                         @csrf
                         <div class="grid gap-4">
                             <!-- Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2">
                                 @include('shared.input', [
                                     'label' => 'Nom',
                                     'name' => 'name',
@@ -1055,25 +1055,29 @@
                                 ])
                             </div>
                             <!-- End Grid -->
-                            @include('shared.input', [
-                                'label' => 'Objet de la demande',
-                                'name' => 'objet',
-                                'class' => 'p-2.5',
-                                'placeholder' => 'service concerné',
-                                'wire:model' => 'objet',
-                            ])
+                            <div class="my-2">
+                                @include('shared.input', [
+                                    'label' => 'Objet de la demande',
+                                    'name' => 'objet',
+                                    'class' => 'p-2.5',
+                                    'placeholder' => 'service concerné',
+                                    'wire:model' => 'objet',
+                                ])
+                            </div>
 
-                            @include('shared.input', [
-                                'label' => 'Contenu',
-                                'name' => 'content',
-                                'wire:model' => 'content',
-                                'type' => 'textarea',
-                                'class' => 'p-2.5',
-                                'placeholder' => 'contenu du message',
-                            ])
+                            <div class="my-2">
+                                @include('shared.input', [
+                                    'label' => 'Contenu',
+                                    'name' => 'content',
+                                    'wire:model' => 'content',
+                                    'type' => 'textarea',
+                                    'class' => 'p-2.5',
+                                    'placeholder' => 'contenu du message',
+                                ])
+                            </div>
                         </div>
                         <!-- End Grid -->
-                        <div class="mt-4 grid">
+                        <div class="my-4 grid">
                             <button type="submit"
                                 class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded border border-transparent bg-primary text-white hover:bg-secondary hover:text-gray-600 focus:outline-none focus:bg-primary focus:text-white disabled:opacity-50 disabled:pointer-events-none">Envoyer
                                 votre message</button>
@@ -1093,7 +1097,7 @@
                     <!-- Icon Block -->
                     <div class="flex items-center gap-x-7 py-6">
                         <i class="fas fa-house-crack mt-1.5 text-primary"></i>
-                        <div class="grow shadow bg-white rounded-lg p-5">
+                        <div class="grow border bg-white rounded-xl p-5">
                             <h3 class="font-semibold text-gray-800 dark:text-neutral-200">{{ $agency->name }}</h3>
                             <p class="mt-1 text-sm text-gray-500 dark:text-neutral-500"> {{ $agency->address }}
                             </p>

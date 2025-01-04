@@ -570,7 +570,7 @@
             <p class="mb-6 font-light text-white dark:text-gray-400 md:text-lg">Rejoignez-nous et construisez votre
                 avenir dans l'immobilier !</p>
             <a href="{{ route('contact') }}"
-                class="group text-gray-800 inline-flex items-center gap-2 bg-secondary hover:bg-gray-800 hover:text-white focus:ring-4 focus:ring-primary-300 font-medium rounded text-md px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Nous
+                class="group text-gray-800 inline-flex items-center gap-2 bg-secondary hover:bg-gray-800 hover:text-white focus:ring-4 focus:ring-primary-300 font-medium rounded-full text-md px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Nous
                 contacter <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

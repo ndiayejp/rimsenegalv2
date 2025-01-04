@@ -1029,19 +1029,19 @@
         </div>
     </section>
     <section class="bg-gray-50 antialiased dark:bg-gray-900">
-        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-10 lg:px-6">
+        <div class="mx-auto max-w-screen-2xl py-8 px-4   lg:px-6">
             <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
                 <div class="mx-auto w-full">
-                    <div class="space-y-6 text-gray-600 text-justify bg-white border p-4 rounded-lg mb-5">
+                    <div class="space-y-6 text-gray-600 text-justify bg-white border p-4 rounded-xl mb-5">
                         {!! $promotion->content !!}
                     </div>
                     <div
-                        class="space-y-4 rounded-lg border border-gray-200 bg-white mb-5 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                        class="space-y-4 rounded-xl border border-gray-200 bg-white mb-5 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                         <p class="text-xl font-semibold text-gray-900 dark:text-white">Spécifications générales</p>
                         <div class="flex items-center flex-wrap gap-2">
                             @foreach ($promotion->tags as $tag)
                                 <a href="#" title=""
-                                    class="inline-block py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    class="inline-block py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                                     role="button">
                                     {{ $tag->name }}
                                 </a>
@@ -1052,7 +1052,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
                             @foreach ($promotion->getMedia('galerie') as $image)
                                 <div class="relative" id="media-container-{{ $image->id }}">
-                                    <img src="{{ $image->getUrl() }}" class="rounded-t">
+                                    <img src="{{ $image->getUrl() }}" class="rounded-xl">
                                 </div>
                             @endforeach
                         </div>

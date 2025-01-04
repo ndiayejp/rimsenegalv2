@@ -8,7 +8,7 @@
 
     <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="mx-auto max-w-2xl text-center">
+        <div class="text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
                 Choisissez l'agence RIM Sénégal!
             </h2>
@@ -18,10 +18,10 @@
         </div>
 
         <!-- Services Grid -->
-        <div class="mx-auto mt-10 grid max-w-lg gap-8 sm:mt-10 md:max-w-none md:grid-cols-2 lg:grid-cols-3">
+        <div class="mx-auto mt-10 grid max-w-lg gap-8 sm:mt-10 md:max-w-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <!-- Service Card 1 -->
             <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 </div>
@@ -51,7 +51,7 @@
 
             <!-- Service Card 2 -->
             <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 </div>
@@ -81,7 +81,7 @@
 
             <!-- Service Card 3 -->
             <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
+                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
                 <div
                     class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ">
                 </div>
@@ -111,9 +111,9 @@
         </div>
 
         <!-- CTA Button -->
-        <div class="mt-10 flex justify-end">
+        <div class="mt-10 flex justify-center">
             <a href="/nos-biens"
-                class="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary hover:bg-secondary hover:text-gray-800 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg">
+                class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary hover:bg-secondary hover:text-gray-800 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg">
                 <span>Voir toutes nos annonces</span>
                 <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">

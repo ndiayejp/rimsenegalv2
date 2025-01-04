@@ -1,5 +1,5 @@
 <article
-    class="group relative overflow-hidden rounded-xl bg-white shadow transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+    class="group relative overflow-hidden rounded-xl bg-white border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
     @if ($post->getMedia()->count() > 0)
         <a href="{{ route('post.show', $post->getSlug()) }}" class="relative block overflow-hidden">
             <div
@@ -34,19 +34,12 @@
 
         <a href="{{ route('post.show', $post->getSlug()) }}" class="mt-4 block">
             <h3
-                class="text-xl font-bold tracking-tight text-gray-900 decoration-primary decoration-2 group-hover:underline">
-                {{ Str::limit($post->name, 28) }}
+                class="text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 decoration-primary decoration-4 group-hover:underline">
+                {{ $post->name }}
             </h3>
-            <div class="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-600">
-                {!! Str::limit($post->content, 150) !!}
-            </div>
+
         </a>
 
-        <div class="mt-4 flex items-center justify-end">
-            <a href="{{ route('post.show', $post->getSlug()) }}"
-                class="text-sm font-medium text-primary transition-colors hover:text-primary/80">
-                Lire la suite
-            </a>
-        </div>
+
     </div>
 </article>

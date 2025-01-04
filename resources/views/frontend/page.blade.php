@@ -1,6 +1,6 @@
 <x-layout>
     @section('title', $page->title)
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-gray-50 dark:bg-gray-900">
         <div
             class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
             {{ $page->title }}
@@ -1023,9 +1023,25 @@
             </svg>
         </div>
         <div class="py-8 px-4 lg:py-8 lg:px-6 mx-auto max-w-screen-2xl text-justify text-gray-600">
-            <div class="bg-white  text-gray-600">
-                <p class="text-lg font-normal lg:text-xl dark:text-gray-400">
-                    {!! $page->content !!}</p>
+            <div class=" pb-14 text-gray-600">
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div class="col-span-2">
+                        <div class="bg-white rounded-xl p-4 border">
+                            <p class="text-lg font-normal lg:text-xl dark:text-gray-400">
+                                {!! $page->content !!}</p>
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <div class="text-left px-3">
+                            @include('partials.categories', ['categories' => $categories])
+                            @include('partials.search')
+                        </div>
+
+
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
