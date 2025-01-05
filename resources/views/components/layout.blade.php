@@ -48,8 +48,6 @@
             </a>
             <nav
                 class="text-white hidden md:flex border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 sticky top-0 z-50">
-
-
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul
                         class="flex flex-col text-sm lg:text-lg md:text-md font-medium md:space-x-2 rtl:space-x-reverse md:flex-row dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -61,7 +59,7 @@
                                 @if ($menu->children->count() > 0)
                                     <!-- Menu avec sous-menus -->
                                     <button id="dropdownNavbarLink{{ $menu->id }}"
-                                        data-dropdown-toggle="dropdownNavbar{{ $menu->id }}"
+                                        data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
                                         class="flex items-center justify-between w-full py-2 px-3 font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-primary  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                                         {{ $menu->name }}
                                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
@@ -72,7 +70,7 @@
                                     </button>
 
                                     <!-- Dropdown menu -->
-                                    <div id="dropdownNavbar{{ $menu->id }}"
+                                    <div id="dropdownHover"
                                         class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                             aria-labelledby="dropdownLargeButton{{ $menu->id }}">
@@ -182,19 +180,19 @@
     <x-footer></x-footer>
 
     <script>
+        //Hamburger menu
         document.querySelector('#hamburger').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-
+        //Mobile menu drompdown
         document.querySelector('#dropdownNavbarLink').addEventListener('click', function() {
             const submenu = document.getElementById('sub-menu');
             submenu.classList.toggle('hidden')
         })
+        //button scroll to top
         var toTopButton = document.getElementById("to-top-button");
-
         if (toTopButton) {
-
             window.onscroll = function() {
                 if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
                     toTopButton.classList.remove("hidden");
