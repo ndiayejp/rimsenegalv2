@@ -38,26 +38,18 @@
 </head>
 
 <body class="bg-gray-50 text-white font-hanken-grotest">
-    <div>
-        <nav
-            class="bg-secondary text-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 sticky top-0 z-50">
-            <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-4 px-4 lg:py-3 lg:px-6">
-                <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="{{ asset('images/logo.png') }}" class="w-16" />
-                    <span
-                        class="hidden xl:block self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
-                        Immobilière Mugnier</span>
-                </a>
-                <button data-collapse-toggle="navbar-multi-level" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded md:hidden hover:bg-white focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-multi-level" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
+    <header class="bg-secondary text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="{{ asset('images/logo.png') }}" class="w-16" />
+                <span
+                    class="hidden xl:block self-center pt-2 text-xl font-bold whitespace-nowrap text-gray-800 dark:text-white font-hanken-grotest">Régie
+                    Immobilière Mugnier</span>
+            </a>
+            <nav
+                class="text-white hidden md:flex border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 sticky top-0 z-50">
+
+
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul
                         class="flex flex-col text-sm lg:text-lg md:text-md font-medium md:space-x-2 rtl:space-x-reverse md:flex-row dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -122,15 +114,83 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </nav>
+            <button id="hamburger" data-collapse-toggle="navbar-multi-level" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded md:hidden hover:text-primary focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-multi-level" aria-expanded="false">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+
+        </div>
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-secondary text-white mt-5 pb-4 space-y-2">
+            @foreach ($menus as $menu)
+                <li class="list-none">
+                    @if ($menu->children->count() > 0)
+                        <!-- Menu avec sous-menus -->
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar{{ $menu->id }}"
+                            class="flex items-center justify-between w-full py-2  font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-primary  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                            {{ $menu->name }}
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="sub-menu" class="hidden w-full dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2  text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownLargeButton{{ $menu->id }}">
+                                @foreach ($menu->children as $submenu)
+                                    <li class="list-none">
+                                        <a href="{{ $submenu->page ? route('page.show', $submenu->page->slug) : $submenu->url }}"
+                                            class="block py-2 hover:text-primary dark:hover:bg-gray-600 dark:hover:text-white">
+                                            {{ $submenu->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @else
+                        <!-- Menu sans sous-menus -->
+                        <a href="{{ $menu->page ? route('page.show', $menu->page->slug) : $menu->url }}"
+                            class="block py-2 font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700   dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                            {{ $menu->name }}
+                        </a>
+                    @endif
+                </li>
+            @endforeach
+            <li class="list-none">
+                <a href="{{ route('properties.index') }}"
+                    class="block text-gray-800 font-bold py-2 hover:text-primary">Louer/Acheter</a>
+            </li>
+            <li class="list-none">
+                <a href="{{ route('promotions.index') }}"
+                    class="block py-2 font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Promotions
+                    immobilières</a>
+            </li>
+            <li class="list-none">
+                <a href="{{ route('contact') }}"
+                    class="block py-2    font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+            </li>
+            <li class="list-none">
+                <a href="https://regie-immobiliere-mugnier.crypto-extranet.com/connexion/" target="_blank"
+                    class="bg-primary text-white inline-block py-2 px-3 rounded font-bold hover:text-white hover:bg-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Extranet</a>
+            </li>
         </nav>
-        <main class="mx-auto min-h-96" id="app">
-            {{ $slot }}
-        </main>
-    </div>
+    </header>
+    <main class="mx-auto min-h-96" id="app">
+        {{ $slot }}
+    </main>
+
     <x-footer></x-footer>
 
     <script>
+        document.querySelector('#hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelector('#dropdownNavbarLink').addEventListener('click', function() {
+            const submenu = document.getElementById('sub-menu');
+            submenu.classList.toggle('hidden')
+        })
         var toTopButton = document.getElementById("to-top-button");
 
         if (toTopButton) {
