@@ -29,7 +29,7 @@
                                         @include('shared.input', [
                                             'label' => 'Titre',
                                             'name' => 'name',
-                                            'class' => 'p-2.5',
+                                            'class' => 'p-2.5 text-gray-600',
                                             'value' => $agency->name,
                                             'placeholder' => 'Nom',
                                         ])
@@ -38,7 +38,7 @@
                                         @include('shared.input', [
                                             'label' => 'Adresse',
                                             'name' => 'address',
-                                            'class' => 'p-2.5',
+                                            'class' => 'p-2.5 text-gray-600',
                                             'value' => $agency->address,
                                             'placeholder' => 'Ex: Point E - Dakar...',
                                         ])
@@ -46,8 +46,9 @@
                                     <div class="mb-3">
                                         @include('shared.input', [
                                             'label' => 'Téléphone',
+                                            'type' => 'textarea',
                                             'name' => 'phone',
-                                            'class' => 'p-2.5',
+                                            'class' => 'p-2.5 text-gray-600',
                                             'value' => $agency->phone,
                                             'placeholder' => 'Ex: +221 33 856 47 15',
                                         ])

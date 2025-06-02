@@ -2,9 +2,11 @@
     @section('title', 'Nous contacter')
     <section class="bg-gray-100 dark:bg-gray-900 relative">
         <div
-            class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
-            <div class="mx-auto max-w-screen-xl text-center relative z-10">Nous Contacter</div>
-            <div class="text-xl font-normal">Où nous trouver?</div>
+            class="bg-primary overflow-hidden relative text-center text-2xl font-extrabold tracking-tight leading-none text-white py-16  dark:text-white">
+            <h2 class="pt-20 text-3xl md:text-5xl lg:text-6xl tracking-tight font-extrabold text-center relative z-10">
+                Nous Contacter
+            </h2>
+            <div class="text-xl md:text-2xl font-normal">Où nous trouver?</div>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1024,99 +1026,122 @@
             </svg>
         </div>
     </section>
-    <!-- Contact Us -->
 
-    <div class="py-10 px-4 lg:px-6 mx-auto max-w-screen-2xl text-justify text-gray-600">
-        <div class="px-5 xl:px-0 grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
-            <!-- Card -->
-            <div class="flex flex-col bg-white border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-neutral-700">
-                <div>
-                    @include('shared.flash')
-                    <form action="{{ route('contact.form') }}" method="POST">
-                        @csrf
-                        <div class="grid gap-4">
-                            <!-- Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2">
-                                @include('shared.input', [
-                                    'label' => 'Nom',
-                                    'name' => 'name',
-                                    'class' => 'p-2.5',
-                                    'placeholder' => 'Nom/Prénom',
-                                    'wire:model' => 'name',
-                                ])
-
-                                @include('shared.input', [
-                                    'label' => 'Email',
-                                    'name' => 'email',
-                                    'type' => 'email',
-                                    'class' => 'p-2.5',
-                                    'placeholder' => 'Email',
-                                    'wire:model' => 'email',
-                                ])
-                            </div>
-                            <!-- End Grid -->
-                            <div class="my-2">
-                                @include('shared.input', [
-                                    'label' => 'Objet de la demande',
-                                    'name' => 'objet',
-                                    'class' => 'p-2.5',
-                                    'placeholder' => 'service concerné',
-                                    'wire:model' => 'objet',
-                                ])
-                            </div>
-
-                            <div class="my-2">
-                                @include('shared.input', [
-                                    'label' => 'Contenu',
-                                    'name' => 'content',
-                                    'wire:model' => 'content',
-                                    'type' => 'textarea',
-                                    'class' => 'p-2.5',
-                                    'placeholder' => 'contenu du message',
-                                ])
-                            </div>
-                        </div>
-                        <!-- End Grid -->
-                        <div class="my-4 grid">
-                            <button type="submit"
-                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded border border-transparent bg-primary text-white hover:bg-secondary hover:text-gray-600 focus:outline-none focus:bg-primary focus:text-white disabled:opacity-50 disabled:pointer-events-none">Envoyer
-                                votre message</button>
-                        </div>
-                        <div class="mt-3 text-center">
-                            <p class="text-sm text-gray-500 dark:text-neutral-500">
-                                Vous avez des questions, nos commerciaux vous répondrons dans les plus brefs délais
-                            </p>
-                        </div>
-                    </form>
+    <!-- Contact Form and Info -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Formulaire de Contact -->
+            <div
+                class="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-2xl p-8 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-lg">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Envoyez-nous un message</h3>
+                    <p class="text-gray-500">Nous vous répondrons dans les plus brefs délais</p>
                 </div>
-            </div>
-            <!-- End Card -->
 
-            <div class="divide-y divide-gray-200 dark:divide-neutral-800">
+                @include('shared.flash')
+
+                <form action="{{ route('contact.form') }}" method="POST" class="space-y-6">
+                    @csrf
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Nom</label>
+                            <div class="relative">
+                                <input type="text" name="name" wire:model="name" placeholder="Nom/Prénom"
+                                    class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                    required>
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <div class="relative">
+                                <input type="email" name="email" wire:model="email" placeholder="Email"
+                                    class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                    required>
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Objet de la demande</label>
+                        <div class="relative">
+                            <input type="text" name="objet" wire:model="objet" placeholder="Service concerné"
+                                class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                required>
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Contenu</label>
+                        <div class="relative">
+                            <textarea name="content" wire:model="content" rows="5" placeholder="Contenu du message"
+                                class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                required></textarea>
+                            <div class="absolute top-3 left-3">
+                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            Envoyer votre message
+                            <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Informations de Contact -->
+            <div class="space-y-8">
                 @foreach ($agencies as $agency)
-                    <!-- Icon Block -->
-                    <div class="flex items-center gap-x-7 py-6">
-                        <i class="fas fa-house-crack mt-1.5 text-primary"></i>
-                        <div class="grow border bg-white rounded-xl p-5">
-                            <h3 class="font-semibold text-gray-800 dark:text-neutral-200">{{ $agency->name }}</h3>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-neutral-500"> {{ $agency->address }}
-                            </p>
-                            <p>{{ $agency->phone }}</p>
+                    <div
+                        class="bg-white rounded-xl shadow-sm p-6 transform transition-all duration-300 hover:scale-105">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary/10 px-3 py-1.5 rounded-full">
+                                <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-800">{{ $agency->name }}</h4>
+                                <p class="text-gray-600 mt-1">{{ $agency->address }}</p>
+                                <p class="text-gray-600">{!! $agency->phone !!}</p>
+                            </div>
                         </div>
                     </div>
                 @endforeach
-                <!-- End Icon Block -->
-                <!-- Icon Block -->
-                <div class=" flex items-center gap-x-7 py-6">
-                    <i class="fas fa-clock mt-1.5 text-primary"></i>
-                    <div class="grow ">
-                        <h3 class="font-semibold text-gray-800 dark:text-neutral-200">Horaires d’ouverture</h3>
-                        <p class="mt-1 text-sm text-gray-500 dark:text-neutral-500">Du lundi au Vendredi 08h à 13h et
-                            de 14h à 17h.</p>
 
-                    </div>
-                </div>
-                <!-- End Icon Block -->
+
             </div>
         </div>
     </div>

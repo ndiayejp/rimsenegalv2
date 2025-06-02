@@ -1,9 +1,11 @@
 <x-layout>
     @section('title', 'Nos promotions immobilières')
     <section class="bg-gray-50 dark:bg-gray-900">
-        <div
-            class="bg-primary overflow-hidden relative text-center text-3xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-6xl dark:text-white">
-            Nos promotions Immobilières <span class="block text-[28px] font-light mt-4">Nos dernières promotions</span>
+        <div class="bg-primary overflow-hidden relative text-center py-16">
+            <h2
+                class="text-3xl pt-20 font-extrabold tracking-tight leading-none text-white  md:text-5xl lg:text-6xl dark:text-white relative z-10">
+                Nos promotions Immobilières <span class="block text-xl md:text-2xl  font-normal mt-4">Nos dernières
+                    promotions</span></h2>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -888,7 +890,7 @@
                     d="M1059.4752,616.55672a.4618.4618,0,0,1-.302-.11191l-5.56714-4.77814a.46394.46394,0,1,1,.60437-.704l5.56714,4.77814a.46393.46393,0,0,1-.30241.816Z"
                     transform="translate(-76.10236 -224.19109)" fill="#ccc" />
             </svg>
-            <svg class="absolute opacity-10 bottom-0 hidden md:inline-flex left-20 h-72 w-auto "
+            <svg class="absolute opacity-10 bottom-0 hidden md:inline-flex left-20 h-72 w-auto"
                 xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="832.02831" height="646"
                 viewBox="0 0 832.02831 646" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <path id="efdf5e1f-6b90-40c1-9274-afa2b16f39be-199" data-name="Path 482"
@@ -1022,42 +1024,45 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="mx-auto max-w-screen-2xl py-10 px-4  lg:px-6">
+        <div class="py-24 px-4 mx-auto max-w-screen-2xl text-justify text-gray-600">
             <div class="grid gap-8  md:grid-cols-3">
                 @foreach ($promotions as $promo)
-                    <article
-                        class="group relative bg-white overflow-hidden rounded-xl border transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+                    <div
+                        class="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-500 cursor-pointer">
+                        <!-- Image de la promotion -->
                         @if ($promo->getFirstMediaUrl())
-                            <a href="{{ route('promotions.show', $promo->getSlug()) }}"
-                                class="relative block overflow-hidden">
+                            <div class="relative h-72 overflow-hidden">
+                                <img src="{{ $promo->getFirstMediaUrl() }}" alt="{{ $promo->title }}"
+                                    class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
+                                <!-- Overlay gradient -->
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100">
+                                    class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500">
                                 </div>
-                                <img alt="" src="{{ $promo->getFirstMediaUrl() }}"
-                                    class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    style="aspect-ratio: 16/9" />
-                                <div
-                                    class="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-secondary opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                </div>
-                            </a>
-                        @endif
-                        <div class="bg-white p-4 sm:p-6 grid grid-rows-subgrid">
-                            <a href="#">
-                                <h3
-                                    class="mt-0.5 text-lg text-gray-900 decoration-primary decoration-4 group-hover:underline">
-                                    {{ Str::limit($promo->title, 42) }}
-                                </h3>
-                            </a>
-                            <div class="mt-3 mb-4  text-gray-600 dark:text-gray-400">
-                                {!! Str::limit($promo->content, 85) !!}
                             </div>
+                        @endif
+
+                        <!-- Contenu de la promotion -->
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-6 bg-white dark:bg-gray-800 transform translate-y-0 group-hover:-translate-y-12 transition-transform duration-500">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                {{ Str::limit($promo->title, 42) }}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                {!! Str::limit($promo->content, 85) !!}
+                            </p>
+                            <a href="{{ route('promotions.show', $promo->getSlug()) }}"
+                                class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors duration-300">
+                                En savoir plus
+                                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </article>
+
+
+                    </div>
                 @endforeach
             </div>
         </div>

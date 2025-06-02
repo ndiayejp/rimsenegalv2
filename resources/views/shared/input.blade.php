@@ -17,7 +17,7 @@
     @if ($type == 'textarea')
         <textarea id="editor" name="{{ $name }}" wire:model.defer="{{ $name }}" id="{{ $name }}"
             data-id={{ $dataId }} data-type="{{ $dataType }}" data-url="{{ $dataUrl }}"
-            class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">{{ old($name, $value) }}</textarea>
+            class="mt-1 block w-full px-4 py-3 text-gray-600 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition duration-200">{{ old($name, $value) }}</textarea>
     @elseif ($type == 'select')
         <select name="{{ $name }}" id="{{ $name }}"
             class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary {{ $class }}">
@@ -31,7 +31,7 @@
             id="{{ $id }}" value="{{ old($name, $value) }}" multiple="{{ $multiple }}"
             wire:model.defer='{{ $name }}'
             class="@error($name)
-         border-red-600 @enderror bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary focus:border-primary block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary {{ $class }}">
+         border-red-600 @enderror mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary transition duration-200 {{ $class }}">
     @endif
     @error($name)
         <div class="text-red-600 text-sm">{{ $message }}</div>

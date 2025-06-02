@@ -1,9 +1,10 @@
 <x-layout>
     @section('title', $page->title)
     <section class="bg-gray-50 dark:bg-gray-900">
-        <div
-            class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
-            {{ $page->title }}
+        <div class="bg-primary overflow-hidden relative text-center py-16">
+            <h2
+                class="pt-20 text-xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-5xl dark:text-white relative z-10">
+                {{ $page->title }}</h2>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto" xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1022,7 +1023,7 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="py-8 px-4 lg:py-8 lg:px-6 mx-auto max-w-screen-2xl text-justify text-gray-600">
+        <div class="py-10 px-4 mx-auto max-w-screen-2xl text-justify text-gray-600">
             <div class=" pb-14 text-gray-600">
                 <div class="grid gap-8 md:grid-cols-3">
                     <div class="col-span-2">
@@ -1053,4 +1054,5 @@
             }
         </style>
     @endsection
+
 </x-layout>

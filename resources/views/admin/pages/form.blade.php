@@ -29,7 +29,7 @@
                                     @include('shared.input', [
                                         'label' => 'Titre',
                                         'name' => 'title',
-                                        'class' => 'p-2.5',
+                                        'class' => 'p-2.5 text-gray-600',
                                         'value' => $page->title,
                                         'placeholder' => 'Titre',
                                     ])

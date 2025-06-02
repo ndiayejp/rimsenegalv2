@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+    <link href="{{ asset('css/tom-select.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/tom-select.complete.min.js') }}"></script>
 
     @php
         $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);

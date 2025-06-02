@@ -1,9 +1,6 @@
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-gray-50 dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-2xl lg:py-16 lg:px-6">
-        <x-section-heading>
-            <x-slot:title>Actualités</x-slot:title>
-            Les dernières nouvelles du monde immobilier
-        </x-section-heading>
+
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2">
             @forelse ($posts as $post)
                 <x-post-card :post="$post"></x-post-card>

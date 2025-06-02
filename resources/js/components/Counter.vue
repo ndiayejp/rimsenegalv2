@@ -1,9 +1,9 @@
 <template>
     <div
-        class="bg-primary overflow-hidden relative text-center text-3xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-6xl dark:text-white"
+        class="bg-primary overflow-hidden relative text-center leading-none text-white py-16 dark:text-white"
     >
         <h2
-            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-white dark:text-white"
+            class="pt-20 text-3xl md:text-5xl lg:text-6xl tracking-tight font-extrabold text-white dark:text-white relative z-10"
         >
             <strong>{{ filteredProperties.length }}</strong>
             biens disponibles à la vente et à la location
@@ -1922,29 +1922,58 @@
             />
         </svg>
     </div>
-    <div class="max-w-screen-2xl mx-auto py-10 px-4 lg:px-6">
+    <div class="py-10 px-4 mx-auto max-w-screen-2xl">
+        <!-- Filtres améliorés -->
         <div
-            class="bg-white rounded dark:bg-gray-800 relative border overflow-hidden"
+            class="bg-white rounded-2xl shadow-lg dark:bg-gray-800 border border-gray-100 dark:border-gray-700 overflow-hidden mb-6"
         >
-            <div
-                class="flex flex-col md:flex-row items-center justify-between p-4"
-            >
-                <div class="w-full space-y-2">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 w-full gap-5"
-                    >
+            <div class="p-6">
+                <h2
+                    class="text-xl font-bold text-gray-800 dark:text-white mb-4"
+                >
+                    Trouvez votre bien idéal
+                </h2>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                >
+                    <div class="relative">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                        >
+                            <svg
+                                class="h-5 w-5 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                />
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                            </svg>
+                        </div>
                         <input
                             v-model="filters.city"
                             type="text"
-                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Dans quelle ville ? Quartier ?"
+                            class="pl-10 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800"
+                            placeholder="Ville, quartier..."
                         />
+                    </div>
 
+                    <div class="relative">
                         <select
                             v-model="filters.category"
-                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-600 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800 appearance-none"
                         >
-                            <option value="">Familles de biens</option>
+                            <option value="">Type de bien</option>
                             <option
                                 :value="category"
                                 v-for="category in allCategories"
@@ -1953,530 +1982,816 @@
                                 {{ category }}
                             </option>
                         </select>
+                    </div>
 
+                    <div class="relative">
                         <select
                             v-model="filters.transaction"
-                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-600 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800 appearance-none"
                         >
-                            <option value="">Type de recherche</option>
+                            <option value="">Transaction</option>
                             <option value="Location">Location</option>
                             <option value="Vente">Vente</option>
                         </select>
+                    </div>
 
+                    <div class="relative">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                        >
+                            <span class="text-gray-400"
+                                ><i class="fas fa-wallet"></i>
+                            </span>
+                        </div>
                         <input
                             v-model="filters.maxPrice"
                             type="number"
-                            name="price"
                             min="0"
-                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Budget maximum"
+                            class="pl-8 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800"
+                            placeholder="Budget max"
                         />
+                    </div>
 
+                    <div class="relative">
+                        <div
+                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                        >
+                            <svg
+                                class="h-5 w-5 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                />
+                            </svg>
+                        </div>
                         <input
                             v-model="filters.nbPieces"
                             type="number"
-                            name="nbpiece"
                             min="0"
-                            class="bg-white font-bold border border-gray-300 text-gray-600 text-sm rounded focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Nombre de pièces"
+                            class="pl-10 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800"
+                            placeholder="Pièces"
                         />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-gray-600 py-5 flex justify-end">
-            <select
-                @onchange="filteredProperties"
-                v-model="sortOption"
-                class="text-gray-600 font-bold rounded border text-sm border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-            >
-                <option value="">Trier par:</option>
-                <option value="priceAsc">Prix croissant</option>
-                <option value="priceDesc">Prix décroissant</option>
-                <option value="date">Date de parution</option>
-            </select>
-        </div>
-        <section class="bg-gray-50 antialiased dark:bg-gray-900">
-            <div class="flex flex-col md:flex-row gap-6">
-                <!-- Colonne de gauche : Liste des annonces -->
-                <div
-                    class="w-full lg:w-1/2 bg-white border p-4 rounded overflow-auto max-h-screen"
+
+        <!-- Tri amélioré -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+                <span v-if="!loading && !isFiltering"
+                    >{{ paginateData.length }} biens trouvés</span
                 >
-                    <div class="mx-auto max-w-7xl 2xl:px-0">
+            </div>
+            <div class="relative">
+                <select
+                    @change="filteredProperties"
+                    v-model="sortOption"
+                    class="px-4 py-3 rounded-xl border border-gray-200 text-gray-600 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200 bg-white dark:bg-gray-800 appearance-none pr-8"
+                >
+                    <option value="">Trier par</option>
+                    <option value="priceAsc">Prix croissant</option>
+                    <option value="priceDesc">Prix décroissant</option>
+                    <option value="date">Plus récents</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Liste des biens -->
+            <div class="w-full lg:w-1/2">
+                <div
+                    class="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700"
+                >
+                    <div class="h-[calc(100vh-100px)] overflow-y-auto">
                         <div
                             v-if="loading || isFiltering"
-                            class="flex items-center justify-center w-full"
+                            class="flex justify-center items-center h-64"
                         >
-                            <div role="status">
-                                <svg
-                                    aria-hidden="true"
-                                    class="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
-                                    viewBox="0 0 100 101"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                                        fill="currentFill"
-                                    />
-                                </svg>
-                                <span class="sr-only">Loading...</span>
-                            </div>
+                            <div
+                                class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+                            ></div>
                         </div>
-                        <div v-else class="mb-5">
+
+                        <div v-else>
                             <template v-if="paginateData.length === 0">
-                                <!-- No results message -->
-                                <div class="text-center w-full col-span-4">
-                                    <p
-                                        class="flex items-center justify-center gap-2 text-gray-600 font-bold dark:text-gray-300"
+                                <div
+                                    class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 text-center"
+                                >
+                                    <svg
+                                        class="mx-auto h-12 w-12 text-gray-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
                                     >
-                                        <i
-                                            class="fas fa-circle-exclamation text-red-600"
-                                        ></i>
-                                        Aucun bien ne correspond à votre
-                                        recherche.
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                    </svg>
+                                    <h3
+                                        class="mt-2 text-lg font-medium text-gray-900 dark:text-white"
+                                    >
+                                        Aucun résultat
+                                    </h3>
+                                    <p
+                                        class="mt-1 text-gray-500 dark:text-gray-400"
+                                    >
+                                        Aucun bien ne correspond à vos critères.
                                     </p>
                                 </div>
                             </template>
+
                             <template v-else>
-                                <ul
-                                    class="grid grid-cols-1 md:grid-cols-2 gap-5"
-                                >
-                                    <li
+                                <div class="grid grid-cols-1 gap-4">
+                                    <div
                                         v-for="property in paginateData"
                                         :key="property.id"
+                                        @click="selectProperty(property)"
                                         :class="{
-                                            'border-primary border-2':
+                                            'border-2 border-primary':
                                                 selectedProperty &&
                                                 selectedProperty.id ===
                                                     property.id,
+                                            'hover:shadow-md': true,
                                         }"
-                                        class="py-3 sm:py-4 cursor-pointer border p-5 rounded-xl hover:border-primary hover:border-2 my-3"
-                                        @click="selectProperty(property)"
+                                        class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 cursor-pointer border border-gray-100 dark:border-gray-700"
                                     >
-                                        <div
-                                            class="grid grid-cols-1 md:grid-rows-[auto_auto] lg:grid-cols-[auto_1fr] gap-4"
-                                        >
-                                            <img
-                                                class="w-12 h-10 sm:w-16 sm:h-12 md:w-20 md:h-16 rounded-xl"
-                                                style="aspect-ratio: 16/9"
-                                                :src="
-                                                    property.thumb ||
-                                                    '../images/noimage.jpg'
-                                                "
-                                                @error="handleImageError"
-                                            />
-
-                                            <div>
+                                        <div class="flex flex-col md:flex-row">
+                                            <div class="relative md:w-1/3 h-48">
+                                                <img
+                                                    class="w-full h-full object-cover"
+                                                    :src="
+                                                        property.thumb ||
+                                                        '../images/noimage.jpg'
+                                                    "
+                                                    @error="handleImageError"
+                                                    alt="Image du bien"
+                                                />
                                                 <div
-                                                    class="text-sm font-medium text-gray-900 truncate dark:text-white"
-                                                >
-                                                    {{ property.categorie }}
-                                                </div>
-                                                <div
-                                                    class="text-sm text-gray-500 truncate dark:text-gray-400"
-                                                >
-                                                    {{ property.transaction }}
-                                                    {{
-                                                        property.localisation
-                                                            .quartier
-                                                            ? " - " +
-                                                              property
-                                                                  .localisation
-                                                                  .quartier
-                                                            : ""
-                                                    }}
-                                                </div>
-                                                <div
-                                                    class="flex items-center my-2 gap-3"
+                                                    class="absolute top-3 left-3"
                                                 >
                                                     <span
-                                                        v-if="
-                                                            property.nbchambres !==
-                                                            '0'
-                                                        "
-                                                        class="rounded-lg text-sm py-1 px-2.5 bg-gray-50 flex items-center text-gray-600 justify-center gap-2"
+                                                        class="px-3 py-1 rounded-xl text-xs font-semibold"
+                                                        :class="{
+                                                            'bg-primary text-white':
+                                                                property.transaction ===
+                                                                'Location',
+                                                            'bg-secondary text-gray-600':
+                                                                property.transaction ===
+                                                                'Vente',
+                                                        }"
                                                     >
                                                         {{
-                                                            property.nbchambres
+                                                            property.transaction
                                                         }}
-                                                        <i
-                                                            class="fas fa-bed"
-                                                        ></i
-                                                    ></span>
-                                                    <span
-                                                        v-if="
-                                                            property.nbpieces !==
-                                                            '0'
-                                                        "
-                                                        class="rounded-lg text-sm py-1 px-2.5 bg-gray-50 text-gray-600 flex items-center justify-center gap-2"
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="p-4 md:w-2/3">
+                                                <div
+                                                    class="flex justify-between items-start"
+                                                >
+                                                    <h3
+                                                        class="text-lg font-bold text-gray-900 dark:text-white"
                                                     >
-                                                        {{ property.nbpieces }}
-                                                        <i
-                                                            class="fas fa-arrow-up-right-from-square"
-                                                        ></i
-                                                    ></span>
+                                                        {{ property.categorie }}
+                                                    </h3>
                                                     <span
-                                                        class="rounded py-1 px-2.5 bg-gray-50 text-sm text-gray-600 flex items-center justify-center gap-2"
-                                                        v-if="
-                                                            property.surface &&
-                                                            property.surface !=
-                                                                0
-                                                        "
+                                                        class="text-lg font-bold text-primary"
                                                     >
-                                                        {{ property.surface }}
-                                                        m²
+                                                        {{
+                                                            formatPrice(
+                                                                property.price
+                                                            )
+                                                        }}
                                                     </span>
                                                 </div>
                                                 <div
-                                                    class="text-base font-bold text-primary dark:text-white"
+                                                    class="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-1"
                                                 >
+                                                    <svg
+                                                        class="w-4 h-4 mr-1"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                    >
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                                        />
+                                                        <path
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                                        />
+                                                    </svg>
                                                     {{
-                                                        formatPrice(
-                                                            property.price
-                                                        )
+                                                        property.localisation
+                                                            .quartier ||
+                                                        "Non précisé"
                                                     }}
+                                                </div>
+                                                <div
+                                                    class="flex flex-wrap gap-3 mt-3"
+                                                >
+                                                    <div
+                                                        v-if="
+                                                            property.nbchambres
+                                                        "
+                                                        class="flex items-center text-sm text-gray-600 dark:text-gray-300"
+                                                    >
+                                                        <svg
+                                                            class="w-4 h-4 mr-1"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                                                            />
+                                                        </svg>
+                                                        {{
+                                                            property.nbchambres
+                                                        }}
+                                                        ch.
+                                                    </div>
+                                                    <div
+                                                        v-if="property.nbpieces"
+                                                        class="flex items-center text-sm text-gray-600 dark:text-gray-300"
+                                                    >
+                                                        <svg
+                                                            class="w-4 h-4 mr-1"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                                            />
+                                                        </svg>
+                                                        {{ property.nbpieces }}
+                                                        pièces
+                                                    </div>
+                                                    <div
+                                                        v-if="
+                                                            property.surface &&
+                                                            property.surface > 0
+                                                        "
+                                                        class="flex items-center text-sm text-gray-600 dark:text-gray-300"
+                                                    >
+                                                        <svg
+                                                            class="w-4 h-4 mr-1"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                        >
+                                                            <path
+                                                                stroke-linecap="round"
+                                                                stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                                            />
+                                                        </svg>
+                                                        {{ property.surface }}
+                                                        m²
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
                             </template>
-                        </div>
-                        <div
-                            v-if="!loading"
-                            class="mt-6 flex items-center justify-center"
-                        >
-                            <button
-                                class="mx-2 px-4 py-2 font-bold bg-primary hover:bg-secondary hover:text-primary text-white rounded disabled:opacity-50"
-                                @click="prevPage"
-                                :disabled="currentPage === 1"
-                            >
-                                Précédent
-                            </button>
-                            <span class="mx-4 text-lg font-bold text-gray-600"
-                                >Page {{ currentPage }} of
-                                {{ totalPages }}</span
-                            >
-                            <button
-                                class="mx-2 px-4 py-2 font-bold bg-primary hover:bg-secondary hover:text-primary text-white rounded disabled:opacity-50"
-                                @click="nextPage"
-                                :disabled="currentPage === totalPages"
-                            >
-                                Suivant
-                            </button>
                         </div>
                     </div>
                 </div>
-                <!-- Colonne de droite : Détails de l'annonce -->
-                <div class="w-full lg:w-1/2 bg-white p-4 rounded border">
-                    <div v-if="selectedProperty">
-                        <div class="flex items-center justify-between">
-                            <h2
-                                class="text-xl font-bold mb-4 dark:text-white text-primary"
-                            >
-                                Détails de l'annonce
-                                <span class="block text-sm text-gray-500"
-                                    >Référence:
-                                    {{ selectedProperty.reference }}</span
+                <!-- Pagination -->
+                <div
+                    v-if="!loading && paginateData.length > 0"
+                    class="mt-6 flex items-center justify-between"
+                >
+                    <button
+                        @click="prevPage"
+                        :disabled="currentPage === 1"
+                        :class="{
+                            'bg-gray-200 text-gray-500 cursor-not-allowed':
+                                currentPage === 1,
+                            'bg-primary text-white hover:bg-primary-dark':
+                                currentPage !== 1,
+                        }"
+                        class="px-4 py-2 rounded-lg font-medium transition duration-200"
+                    >
+                        Précédent
+                    </button>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">
+                        Page {{ currentPage }} sur {{ totalPages }}
+                    </span>
+                    <button
+                        @click="nextPage"
+                        :disabled="currentPage === totalPages"
+                        :class="{
+                            'bg-gray-200 text-gray-500 cursor-not-allowed':
+                                currentPage === totalPages,
+                            'bg-primary text-white hover:bg-primary-dark':
+                                currentPage !== totalPages,
+                        }"
+                        class="px-4 py-2 rounded-lg font-medium transition duration-200"
+                    >
+                        Suivant
+                    </button>
+                </div>
+            </div>
+
+            <!-- Détails du bien -->
+            <div class="w-full lg:w-1/2">
+                <div
+                    v-if="selectedProperty"
+                    class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
+                >
+                    <!-- En-tête -->
+                    <div
+                        class="p-6 border-b border-gray-100 dark:border-gray-700"
+                    >
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h2
+                                    class="text-2xl font-bold text-gray-900 dark:text-white"
                                 >
-                            </h2>
-                            <div class="mb-4 text-gray-700 dark:text-gray-300">
-                                <h3 class="text-lg">
-                                    <span class="text-primary">{{
-                                        selectedProperty.categorie +
-                                        " en " +
-                                        selectedProperty.transaction
-                                    }}</span>
-                                </h3>
+                                    {{ selectedProperty.categorie }}
+                                </h2>
                                 <div
-                                    class="mb-4 text-gray-700 dark:text-gray-300"
+                                    class="flex items-center text-gray-600 dark:text-gray-300 mt-1"
                                 >
-                                    <i class="fas fa-map-pin text-primary"></i>
+                                    <svg
+                                        class="w-5 h-5 mr-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        />
+                                    </svg>
                                     {{
                                         selectedProperty.localisation.quartier
-                                            ? selectedProperty.localisation
-                                                  .quartier + " - "
-                                            : ""
-                                    }}{{ selectedProperty.localisation.ville }}
+                                    }},
+                                    {{ selectedProperty.localisation.ville }}
+                                </div>
+                            </div>
+                            <span class="text-2xl font-bold text-primary">
+                                {{ formatPrice(selectedProperty.price) }}
+                            </span>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                            >
+                                Réf: {{ selectedProperty.reference }}
+                            </span>
+                            <span
+                                class="px-3 py-1 rounded-full text-sm"
+                                :class="{
+                                    'bg-blue-100 text-blue-800':
+                                        selectedProperty.transaction ===
+                                        'Location',
+                                    'bg-green-100 text-green-800':
+                                        selectedProperty.transaction ===
+                                        'Vente',
+                                }"
+                            >
+                                {{ selectedProperty.transaction }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Galerie -->
+                    <div
+                        v-if="filteredImages.length > 0"
+                        class="p-6 border-b border-gray-100 dark:border-gray-700"
+                    >
+                        <h3
+                            class="text-lg font-semibold text-gray-900 dark:text-white mb-3"
+                        >
+                            Galerie photos
+                        </h3>
+
+                        <div
+                            class="grid grid-flow-col auto-cols-[minmax(200px,1fr)] gap-3 pb-4 overflow-x-auto scroll-smooth snap-x custom-scroll"
+                            :class="{
+                                'auto-cols-[minmax(280px,400px)]':
+                                    filteredImages.length <= 3,
+                                'auto-cols-[minmax(220px,300px)]':
+                                    filteredImages.length > 3 &&
+                                    filteredImages.length <= 5,
+                                'auto-cols-[minmax(180px,250px)]':
+                                    filteredImages.length > 5,
+                            }"
+                        >
+                            <div
+                                v-for="(image, index) in filteredImages"
+                                :key="index"
+                                @click="openLightbox(index)"
+                                class="relative group cursor-pointer snap-start h-40"
+                            >
+                                <img
+                                    :src="image"
+                                    class="w-full h-full object-cover rounded-lg"
+                                    :alt="`Photo ${index + 1} du bien`"
+                                />
+                                <div
+                                    class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 rounded-lg transition duration-200"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Caractéristiques -->
+                    <div
+                        class="p-6 border-b border-gray-100 dark:border-gray-700"
+                    >
+                        <h3
+                            class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+                        >
+                            Caractéristiques
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div
+                                v-if="selectedProperty.nbchambres"
+                                class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3"
+                            >
+                                <div
+                                    class="text-sm text-gray-500 dark:text-gray-300"
+                                >
+                                    Chambres
+                                </div>
+                                <div class="text-lg font-semibold text-primary">
+                                    {{ selectedProperty.nbchambres }}
+                                </div>
+                            </div>
+                            <div
+                                v-if="selectedProperty.nbpieces"
+                                class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3"
+                            >
+                                <div
+                                    class="text-sm text-gray-500 dark:text-gray-300"
+                                >
+                                    Pièces
+                                </div>
+                                <div class="text-lg font-semibold text-primary">
+                                    {{ selectedProperty.nbpieces }}
+                                </div>
+                            </div>
+                            <div
+                                v-if="
+                                    selectedProperty.surface &&
+                                    selectedProperty.surface > 0
+                                "
+                                class="bg-gray-50 dark:bg-gray-700 rounded-lg p-3"
+                            >
+                                <div
+                                    class="text-sm text-gray-500 dark:text-gray-300"
+                                >
+                                    Surface
+                                </div>
+                                <div class="text-lg font-semibold text-primary">
+                                    {{ selectedProperty.surface }} m²
                                 </div>
                             </div>
                         </div>
-                        <template v-if="filteredImages.length > 0">
-                            <h2 class="font-bold text-xl text-primary">
-                                Galerie
-                            </h2>
-                            <div
-                                class="flex items-center gap-3 my-8 overflow-x-auto whitespace-nowrap scroll-smooth snap-x"
-                            >
-                                <img
-                                    v-for="(image, index) in filteredImages"
-                                    :key="index"
-                                    :src="image"
-                                    alt="Thumbnail"
-                                    class="w-20 h-20 cursor-pointer rounded"
-                                    style="aspect-ratio: 16/9"
-                                    @click="openLightbox(index)"
-                                    @error="
-                                        () => markImageAsBroken(index, image)
-                                    "
-                                />
-                            </div>
-                        </template>
-                        <h2
-                            v-if="
-                                selectedProperty.nbchambres ||
-                                selectedProperty.nbpieces ||
-                                selectedProperty.surface
-                            "
-                            class="font-bold text-xl text-primary my-4"
+                    </div>
+
+                    <!-- Description -->
+                    <div class="p-6">
+                        <h3
+                            class="text-lg font-semibold text-gray-900 dark:text-white mb-3"
                         >
-                            Caractéristiques
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                            <div
-                                class="text-gray-600 border rounded-xl p-3 mb-5"
-                                v-if="
-                                    selectedProperty.nbchambres &&
-                                    selectedProperty.nbchambres != 0
-                                "
-                            >
-                                <h2 class="font-semibold text-md">
-                                    Nbre Chambres
-                                </h2>
-                                {{ selectedProperty.nbchambres }}
-                            </div>
-                            <div
-                                class="text-gray-600 border rounded-lg p-3 mb-5"
-                                v-if="
-                                    selectedProperty.nbpieces &&
-                                    selectedProperty.nbpieces != 0
-                                "
-                            >
-                                <h2 class="font-semibold text-md">
-                                    Nbre pièces
-                                </h2>
-                                {{ selectedProperty.nbpieces }}
-                            </div>
-                            <div
-                                class="text-gray-600 border rounded-lg p-3 mb-5"
-                                v-if="
-                                    selectedProperty.surface &&
-                                    selectedProperty.surface != 0
-                                "
-                            >
-                                <h2 class="font-semibold text-md">
-                                    Surface habitable
-                                </h2>
-                                {{ selectedProperty.surface }} m²
-                            </div>
-                        </div>
-                        <p
-                            class="mb-4 text-lg font-semibold text-gray-700 dark:text-gray-300"
-                        >
-                            <strong
-                                >Prix:
-                                {{
-                                    formatPrice(selectedProperty.price)
-                                }}</strong
-                            >
-                        </p>
-                        <h2 class="font-bold text-xl text-primary mb-4">
                             Description
-                        </h2>
-                        <p class="mb-4 text-gray-700 dark:text-gray-300">
+                        </h3>
+                        <p
+                            class="text-gray-600 dark:text-gray-300 whitespace-pre-line"
+                        >
                             {{ selectedProperty.description }}
                         </p>
-                        <h2 class="font-bold text-xl text-primary mb-4">
-                            Emplacement
-                        </h2>
-                        <div id="map" class="w-full h-72"></div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-b-2xl">
                         <button
                             @click="openContactForm"
-                            class="w-full bg-primary text-white py-2 rounded hover:bg-secondary hover:text-gray-800 my-4"
+                            class="w-full bg-primary hover:bg-secondary hover:text-gray-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-md transition duration-200"
                         >
-                            Contacter l'agence pour ce bien immobilier
+                            Contacter un conseiller
                         </button>
-                        <!-- Modal pour le formulaire -->
-                        <div
-                            v-if="isContactFormOpen"
-                            class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center"
+                    </div>
+                </div>
+
+                <!-- Aucun bien sélectionné -->
+                <div
+                    v-else
+                    class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 text-center h-full flex items-center justify-center"
+                >
+                    <div>
+                        <svg
+                            class="mx-auto h-12 w-12 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
                         >
-                            <div
-                                class="bg-white relative rounded shadow-lg p-6 w-full max-w-lg"
-                            >
-                                <button
-                                    @click="closeContactForm"
-                                    class="absolute top-4 right-8 text-gray-700"
-                                >
-                                    <i class="fas fa-xmark"></i>
-                                </button>
-                                <h2 class="text-lg font-bold text-primary mb-4">
-                                    Contacter l'agence
-                                </h2>
-                                <form>
-                                    <input
-                                        type="hidden"
-                                        v-model="selectedProperty.id"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        v-model="selectedProperty.reference"
-                                    />
-                                    <div class="mb-4 text-gray-600">
-                                        <label class="block text-sm font-medium"
-                                            >Référence</label
-                                        >
-                                        <p class="font-semibold">
-                                            {{ selectedProperty.reference }}
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Nom</label
-                                        >
-                                        <input
-                                            v-model="contactForm.name"
-                                            type="text"
-                                            :class="[
-                                                'w-full border rounded p-2 text-gray-600',
-                                                formErrors.name
-                                                    ? 'border-red-500'
-                                                    : 'border-gray-300',
-                                            ]"
-                                            @input="validateField('name')"
-                                        />
-                                        <p
-                                            v-if="formErrors.name"
-                                            class="text-red-600 text-sm"
-                                        >
-                                            {{ formErrors.name }}
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Email</label
-                                        >
-                                        <input
-                                            v-model="contactForm.email"
-                                            type="email"
-                                            :class="[
-                                                'w-full border rounded p-2 text-gray-600',
-                                                formErrors.email
-                                                    ? 'border-red-500'
-                                                    : 'border-gray-300',
-                                            ]"
-                                            @input="validateField('email')"
-                                        />
-                                        <p
-                                            v-if="formErrors.email"
-                                            class="text-red-600 text-sm"
-                                        >
-                                            {{ formErrors.email }}
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Message</label
-                                        >
-                                        <textarea
-                                            v-model="contactForm.message"
-                                            :class="[
-                                                'w-full border rounded p-2 text-gray-600',
-                                                formErrors.message
-                                                    ? 'border-red-500'
-                                                    : 'border-gray-300',
-                                            ]"
-                                            rows="4"
-                                            @input="validateField('message')"
-                                        ></textarea>
-                                        <p
-                                            v-if="formErrors.message"
-                                            class="text-red-600 text-sm"
-                                        >
-                                            {{ formErrors.message }}
-                                        </p>
-                                    </div>
-                                    <button
-                                        type="submit"
-                                        @click="submitContactForm"
-                                        :class="[
-                                            'w-full bg-primary text-white py-2 rounded hover:bg-secondary hover:text-gray-700',
-                                            isSubmitting
-                                                ? 'cursor-not-allowed opacity-50'
-                                                : '',
-                                        ]"
-                                        :disabled="isSubmitting"
-                                    >
-                                        <span
-                                            v-if="isSubmitting"
-                                            class="flex items-center justify-center"
-                                        >
-                                            <svg
-                                                aria-hidden="true"
-                                                class="w-5 h-5 mr-2 text-white animate-spin fill-primary"
-                                                viewBox="0 0 100 101"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                                                    fill="currentColor"
-                                                />
-                                                <path
-                                                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                                                    fill="currentFill"
-                                                />
-                                            </svg>
-                                            Envoi en cours...
-                                        </span>
-                                        <span v-else>Envoyer</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                            />
+                        </svg>
+                        <h3
+                            class="mt-2 text-lg font-medium text-gray-900 dark:text-white"
+                        >
+                            Sélectionnez un bien
+                        </h3>
+                        <p class="mt-1 text-gray-500 dark:text-gray-400">
+                            Cliquez sur un bien pour voir les détails
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Lightbox for displaying large images -->
+        </div>
+
+        <!-- Lightbox améliorée -->
         <div
             v-if="isLightboxOpen"
-            class="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 transition-opacity duration-300"
         >
             <button
                 @click="closeLightbox"
-                class="absolute top-4 right-4 text-white text-2xl"
+                class="absolute top-6 right-6 text-white hover:text-gray-300 z-10"
             >
-                <i class="fas fa-xmark"></i>
+                <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                    />
+                </svg>
             </button>
 
             <button
                 @click="prevImage"
-                class="absolute left-4 text-white text-3xl"
+                class="absolute left-6 text-white hover:text-gray-300 z-10"
             >
-                <i class="fas fa-chevron-left"></i>
+                <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"
+                    />
+                </svg>
             </button>
-
-            <img
-                :src="selectedProperty.images[currentImageIndex]"
-                class="max-w-4xl max-h-screen object-cover"
-                alt="Large Image"
-            />
 
             <button
                 @click="nextImage"
-                class="absolute right-4 text-white text-3xl"
+                class="absolute right-6 text-white hover:text-gray-300 z-10"
             >
-                <i class="fas fa-chevron-right"></i>
+                <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                    />
+                </svg>
             </button>
+
+            <div
+                class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center"
+            >
+                <img
+                    :src="selectedProperty.images[currentImageIndex]"
+                    class="max-w-full max-h-full object-contain"
+                    :alt="`Image ${currentImageIndex + 1} du bien`"
+                />
+            </div>
+
+            <div
+                class="absolute bottom-6 left-0 right-0 text-center text-white"
+            >
+                {{ currentImageIndex + 1 }} /
+                {{ selectedProperty.images.length }}
+            </div>
+        </div>
+
+        <!-- Modal de contact amélioré -->
+        <div
+            v-if="isContactFormOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300"
+        >
+            <div
+                class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md relative"
+            >
+                <button
+                    @click="closeContactForm"
+                    class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+                >
+                    <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+
+                <div class="p-6">
+                    <h2
+                        class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                    >
+                        Contacter l'agence
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        À propos du bien:
+                        <span class="font-semibold">{{
+                            selectedProperty.reference
+                        }}</span>
+                    </p>
+
+                    <form @submit.prevent="submitContactForm">
+                        <div class="space-y-4">
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                                >
+                                    Nom complet
+                                </label>
+                                <input
+                                    v-model="contactForm.name"
+                                    type="text"
+                                    :class="[
+                                        'w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary/30 transition duration-200',
+                                        formErrors.name
+                                            ? 'border-red-500 focus:border-red-500'
+                                            : 'border-gray-300 dark:border-gray-600 focus:border-primary',
+                                    ]"
+                                    @input="validateField('name')"
+                                    placeholder="Votre nom"
+                                />
+                                <p
+                                    v-if="formErrors.name"
+                                    class="mt-1 text-sm text-red-600"
+                                >
+                                    {{ formErrors.name }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    v-model="contactForm.email"
+                                    type="email"
+                                    :class="[
+                                        'w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary/30 transition duration-200',
+                                        formErrors.email
+                                            ? 'border-red-500 focus:border-red-500'
+                                            : 'border-gray-300 dark:border-gray-600 focus:border-primary',
+                                    ]"
+                                    @input="validateField('email')"
+                                    placeholder="votre@email.com"
+                                />
+                                <p
+                                    v-if="formErrors.email"
+                                    class="mt-1 text-sm text-red-600"
+                                >
+                                    {{ formErrors.email }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                                >
+                                    Téléphone
+                                </label>
+                                <input
+                                    v-model="contactForm.phone"
+                                    type="tel"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary/30 transition duration-200"
+                                    placeholder="06 12 34 56 78"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                                >
+                                    Message
+                                </label>
+                                <textarea
+                                    v-model="contactForm.message"
+                                    rows="4"
+                                    :class="[
+                                        'w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-primary/30 transition duration-200',
+                                        formErrors.message
+                                            ? 'border-red-500 focus:border-red-500'
+                                            : 'border-gray-300 dark:border-gray-600 focus:border-primary',
+                                    ]"
+                                    @input="validateField('message')"
+                                    placeholder="Votre message..."
+                                ></textarea>
+                                <p
+                                    v-if="formErrors.message"
+                                    class="mt-1 text-sm text-red-600"
+                                >
+                                    {{ formErrors.message }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            :disabled="isSubmitting"
+                            class="mt-6 w-full bg-primary hover:bg-secondary hover:text-gray-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-md transition duration-200 flex items-center justify-center"
+                        >
+                            <span v-if="isSubmitting" class="flex items-center">
+                                <svg
+                                    class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <circle
+                                        class="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="4"
+                                    ></circle>
+                                    <path
+                                        class="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                    ></path>
+                                </svg>
+                                Envoi en cours...
+                            </span>
+                            <span v-else>Envoyer la demande</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -2579,13 +2894,13 @@ const filteredProperties = computed(() => {
     return filtered;
 });
 
+// Initialisation de la carte Mapbox
 const initializeMap = () => {
-    if (map.value) return;
+    if (map.value || !selectedProperty.value) return;
 
-    const propLatLng = [
-        selectedProperty.value.localisation.longitude,
-        selectedProperty.value.localisation.latitude,
-    ];
+    const { longitude, latitude } = selectedProperty.value.localisation;
+    const propLatLng = [parseFloat(longitude), parseFloat(latitude)];
+
     // Initialize the map
     map.value = new mapboxgl.Map({
         container: "map",
@@ -2594,18 +2909,17 @@ const initializeMap = () => {
         zoom: 15,
     });
 
-    // Add geocoder (optional if you want search functionality)
+    // Ajout du geocoder pour la recherche d'adresses
     geocoder.value = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
         marker: false,
     });
-
+    // Ajout d'un marqueur pour la propriété sélectionnée
     const popup = new mapboxgl.Popup({
         offset: 25,
     }).setText(selectedProperty.value.localisation.quartier);
 
-    // Add a marker at the property's location
     new mapboxgl.Marker()
         .setLngLat(propLatLng)
         .setPopup(popup)

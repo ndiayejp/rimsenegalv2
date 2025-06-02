@@ -1,12 +1,13 @@
 <x-layout>
     @section('title', $promotion->title)
     <section class="bg-gray-50 dark:bg-gray-900 relative">
-        <div
-            class="bg-primary overflow-hidden relative text-center text-xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-5xl dark:text-white">
-            <div class=" mx-auto max-w-screen-2xl text-center">{{ $promotion->title }}</div>
+        <div class="bg-primary overflow-hidden relative text-center  py-16 ">
+            <h2
+                class="pt-20 text-xl font-extrabold tracking-tight leading-none text-white text-center md:text-5xl lg:text-5xl dark:text-white relative z-10">
+                {{ $promotion->title }}</h2>
             @if ($promotion->hasMedia('pdfs'))
                 <div><a href="{{ $promotion->getFirstMediaUrl('pdfs') }}" target="_blank"
-                        class="text-white inline-block text-xl font-normal hover:text-secondary" download>
+                        class="text-white inline-block text-xl md:text-2xl font-normal hover:text-secondary" download>
                         <i class="fas fa-file-download"></i> Télécharger les plans</a></div>
             @endif
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
@@ -1028,37 +1029,221 @@
             </svg>
         </div>
     </section>
-    <section class="bg-gray-50 antialiased dark:bg-gray-900">
-        <div class="mx-auto max-w-screen-2xl py-8 px-4   lg:px-6">
-            <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-                <div class="mx-auto w-full">
-                    <div class="space-y-6 text-gray-600 text-justify bg-white border p-4 rounded-xl mb-5">
-                        {!! $promotion->content !!}
-                    </div>
-                    <div
-                        class="space-y-4 rounded-xl border border-gray-200 bg-white mb-5 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                        <p class="text-xl font-semibold text-gray-900 dark:text-white">Spécifications générales</p>
-                        <div class="flex items-center flex-wrap gap-2">
-                            @foreach ($promotion->tags as $tag)
-                                <a href="#" title=""
-                                    class="inline-block py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    role="button">
-                                    {{ $tag->name }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
+    <section class="bg-gradient-to-b from-gray-50 to-gray-100 antialiased">
+        <div class="py-12 px-4 mx-auto max-w-screen-2xl">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Contenu principal -->
+                <div class="w-full lg:w-2/3">
+                    <!-- Galerie d'images -->
                     @if (count($promotion->getMedia('galerie')) > 0)
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-                            @foreach ($promotion->getMedia('galerie') as $image)
-                                <div class="relative" id="media-container-{{ $image->id }}">
-                                    <img src="{{ $image->getUrl() }}" class="rounded-xl">
+                        <div class="mb-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="gallery">
+                                @foreach ($promotion->getMedia('galerie') as $index => $image)
+                                    <div class="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                                        onclick="openLightbox({{ $index }})">
+                                        <img src="{{ $image->getUrl() }}"
+                                            alt="Projet immobilier {{ $promotion->title }}"
+                                            class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                            <span class="text-white font-medium">Voir plus</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Lightbox corrigée -->
+                        <div id="lightbox"
+                            class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4">
+                            <div class="relative w-full h-full flex items-center justify-center">
+                                <!-- Bouton fermer -->
+                                <button onclick="closeLightbox()"
+                                    class="absolute top-6 right-6 text-white hover:text-gray-300 z-10">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+
+                                <!-- Bouton précédent -->
+                                <button onclick="prevImage()"
+                                    class="absolute left-6 text-white hover:text-gray-300 z-10">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+
+                                <!-- Bouton suivant -->
+                                <button onclick="nextImage()"
+                                    class="absolute right-6 text-white hover:text-gray-300 z-10">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+
+                                <!-- Contenu image -->
+                                <div class="max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+                                    <img id="lightbox-image" src="" alt=""
+                                        class="max-w-full max-h-full object-contain">
                                 </div>
-                            @endforeach
+
+                                <!-- Légende -->
+                                <div id="lightbox-caption"
+                                    class="absolute bottom-6 left-0 right-0 text-center text-white text-lg"></div>
+                            </div>
                         </div>
                     @endif
+
+
+                    <!-- Description -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8">
+                        <div class="p-6 md:p-8">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Détails du projet</h2>
+                            <div class="prose max-w-none text-gray-600">
+                                {!! $promotion->content !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar avec spécifications -->
+                <div class="w-full lg:w-1/3">
+                    <!-- Spécifications -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                        <div class="p-6 md:p-8 border-b border-gray-100">
+                            <h3 class="text-xl font-bold text-gray-800 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Spécifications
+                            </h3>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-wrap gap-3">
+                                @foreach ($promotion->tags as $tag)
+                                    <span
+                                        class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary">
+                                        {{ $tag->name }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="p-6 bg-gray-50">
+                            <a href="/contact"
+                                class="w-full bg-primary hover:bg-secondary text-white hover:text-gray-800 font-medium py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Contacter un conseiller
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Points clés -->
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden mt-6 ">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Points clés
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 mt-0.5 mr-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-600">Livraison prévue Q2 2024</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 mt-0.5 mr-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-600">Garantie décennale incluse</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 mt-0.5 mr-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span class="text-gray-600">Disponible en VEFA</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    @section('scripts')
+        <script>
+            // Configuration de la lightbox
+            const images = @json(
+                $promotion->getMedia('galerie')->map(
+                    fn($img) => [
+                        'url' => $img->getUrl(),
+                        'alt' => 'Projet immobilier ' . $promotion->title,
+                    ]));
+
+            let currentImageIndex = 0;
+
+            function openLightbox(index) {
+                currentImageIndex = index;
+                updateLightboxImage();
+                document.getElementById('lightbox').classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Empêche le défilement
+            }
+
+            function closeLightbox() {
+                document.getElementById('lightbox').classList.add('hidden');
+                document.body.style.overflow = ''; // Rétablit le défilement
+            }
+
+            function updateLightboxImage() {
+                const lightboxImage = document.getElementById('lightbox-image');
+                const lightboxCaption = document.getElementById('lightbox-caption');
+
+                lightboxImage.src = images[currentImageIndex].url;
+                lightboxImage.alt = images[currentImageIndex].alt;
+                lightboxCaption.textContent = `${currentImageIndex + 1} / ${images.length}`;
+            }
+
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateLightboxImage();
+            }
+
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateLightboxImage();
+            }
+
+            // Navigation au clavier
+            document.addEventListener('keydown', (e) => {
+                if (!document.getElementById('lightbox').classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
+                }
+            });
+        </script>
+    @endsection
 </x-layout>

@@ -1,9 +1,12 @@
 <x-layout>
     @section('title', 'Nos derniers articles')
     <section class="bg-gray-100 dark:bg-gray-900">
-        <div
-            class="bg-primary overflow-hidden relative text-center text-3xl font-extrabold tracking-tight leading-none text-white py-16 md:text-5xl lg:text-6xl dark:text-white">
-            Actualités <span class="block text-[28px] font-light mt-4">Actualités & évènements</span>
+        <div class="bg-primary overflow-hidden relative text-center  py-16  ">
+            <h2
+                class="pt-20 text-3xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white relative z-10">
+                Actualités
+                <span class="block text-[28px] font-light mt-4">Actualités & évènements</span>
+            </h2>
             <svg class="absolute opacity-20 bottom-0 right-0 h-72 w-auto " xmlns="http://www.w3.org/2000/svg"
                 data-name="Layer 1" width="1047.79529" height="450.30891" viewBox="0 0 1047.79529 450.30891"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1022,9 +1025,9 @@
                     fill="#cbcbcb" />
             </svg>
         </div>
-        <div class="mx-auto max-w-screen-2xl py-8 px-4 lg:py-8 lg:px-6">
-            <div class="grid gap-8 md:grid-cols-3">
-                <div class="col-span-2 ">
+        <div class="py-10 px-4 mx-auto max-w-screen-2xl text-justify text-gray-600">
+            <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
+                <div class="col-span-1 md:col-span-2">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         @forelse ($posts as $post)
                             <x-post-card-wide :post="$post"></x-post-card-wide>
@@ -1041,7 +1044,7 @@
                     </nav>
                 </div>
                 <div class="col-span-1">
-                    <div class="text-left px-3 lg:px-0">
+                    <div class="text-left">
                         @include('partials.categories')
                     </div>
                     @include('partials.search')

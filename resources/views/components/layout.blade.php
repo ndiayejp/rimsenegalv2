@@ -14,13 +14,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" />
 
-    {{-- <link href="{{ asset('build/assets/app-73662a70.css') }}" rel="stylesheet">
-    <link href="{{ asset('build/assets/app-279b99f9.css') }}" rel="stylesheet">
-    <script src="{{ asset('build/assets/app-4514722f.js') }}"></script> --}}
     {{-- @php
         $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
     @endphp
@@ -38,8 +32,8 @@
 </head>
 
 <body class="bg-gray-50 text-white font-hanken-grotest">
-    <header class="bg-secondary text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
+    <header class="bg-secondary text-white z-40 top-0 start-0 fixed w-full">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center p-4">
             <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('images/logo.png') }}" class="w-16" />
                 <span
@@ -51,15 +45,14 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul
                         class="flex flex-col text-sm lg:text-lg md:text-md font-medium md:space-x-2 rtl:space-x-reverse md:flex-row dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-
                         <?php $menus = \App\Models\Menu::with('children')->topLevel()->get(); ?>
-
                         @foreach ($menus as $menu)
                             <li>
                                 @if ($menu->children->count() > 0)
                                     <!-- Menu avec sous-menus -->
                                     <button id="dropdownNavbarLink{{ $menu->id }}"
-                                        data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+                                        data-dropdown-toggle="dropdownHover{{ $menu->id }}"
+                                        data-dropdown-trigger="hover"
                                         class="flex items-center justify-between w-full py-2 px-3 font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-primary  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                                         {{ $menu->name }}
                                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
@@ -68,9 +61,8 @@
                                                 stroke-width="2" d="m1 1 4 4 4-4" />
                                         </svg>
                                     </button>
-
                                     <!-- Dropdown menu -->
-                                    <div id="dropdownHover"
+                                    <div id="dropdownHover{{ $menu->id }}"
                                         class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                             aria-labelledby="dropdownLargeButton{{ $menu->id }}">
@@ -104,7 +96,8 @@
                         </li>
                         <li>
                             <a href="{{ route('contact') }}"
-                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                                class="block py-2 px-3  rounded font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                                Contact</a>
                         </li>
                         <li>
                             <a href="https://regie-immobiliere-mugnier.crypto-extranet.com/connexion/" target="_blank"
@@ -121,16 +114,15 @@
 
         </div>
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="hidden md:hidden bg-secondary text-white mt-5 pb-4 space-y-2">
+        <nav id="mobile-menu" class="hidden md:hidden bg-secondary text-white mt-5 pb-4 space-y-2 px-4">
             @foreach ($menus as $menu)
                 <li class="list-none">
                     @if ($menu->children->count() > 0)
                         <!-- Menu avec sous-menus -->
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar{{ $menu->id }}"
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                             class="flex items-center justify-between w-full py-2  font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-primary  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             {{ $menu->name }}
                         </button>
-
                         <!-- Dropdown menu -->
                         <div id="sub-menu" class="hidden w-full dark:bg-gray-700 dark:divide-gray-600">
                             <ul class="py-2  text-sm text-gray-700 dark:text-gray-200"
@@ -176,9 +168,7 @@
     <main class="mx-auto min-h-96" id="app">
         {{ $slot }}
     </main>
-
     <x-footer></x-footer>
-
     <script>
         //Hamburger menu
         document.querySelector('#hamburger').addEventListener('click', function() {

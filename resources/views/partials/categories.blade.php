@@ -1,5 +1,5 @@
 <h3 class="text-xl font-bold mb-5 text-gray-700">{{ __('Catégories') }}</h3>
-<ul class="border border-gray-200 bg-white rounded-lg px-3 py-1.5">
+<ul class="border border-gray-200 bg-white rounded-xl px-3 py-1.5 w-full">
     @foreach ($categories as $cat)
         @if ($cat->posts()->count() > 0)
             <li class="py-1.5">

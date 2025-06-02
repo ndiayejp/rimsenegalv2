@@ -1,125 +1,111 @@
-<section class="relative overflow-hidden bg-gray-50 py-5 sm:py-10">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 -z-10">
-        <div
-            class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40">
-        </div>
+<section class="relative bg-white py-24">
+    <!-- Background abstract shapes -->
+    <div class="absolute inset-0 overflow-hidden -z-10">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-[#008dcf]/5 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-t from-[#fff02a]/5 to-transparent"></div>
     </div>
 
-    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-                Choisissez l'agence RIM Sénégal!
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <!-- Section header with animated underline -->
+        <div class="text-center max-w-2xl mx-auto mb-20">
+            <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">
+                <span class="relative inline-block">
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-1 bg-[#fff02a] transform origin-left scale-x-100 transition-transform duration-500"></span>
+                    RIM Sénégal
+                </span> - L'excellence immobilière réinventée
             </h2>
-            <p class="mt-4 text-lg leading-8 text-gray-600">
-                Votre partenaire de confiance pour tous vos projets immobiliers au Sénégal
+            <p class="text-xl text-gray-600">
+                Une approche contemporaine du marché immobilier, alliant expertise traditionnelle et innovation digitale
             </p>
         </div>
 
-        <!-- Services Grid -->
-        <div class="mx-auto mt-10 grid max-w-lg gap-8 sm:mt-10 md:max-w-none grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <!-- Service Card 1 -->
-            <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                </div>
-
-                <div class="relative z-10">
-                    <div class="mb-8 flex justify-center">
-                        <div class="relative">
-                            <div
-                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
-                            </div>
+        <!-- Services - Horizontal scroller for desktop / vertical on mobile -->
+        <div class="relative">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Service 1 - Acheter -->
+                <div class="flex-shrink-0 snap-center">
+                    <div
+                        class="group relative h-full bg-white p-8 border border-gray-100 rounded-2xl hover:border-[#008dcf]/30 transition-all duration-500">
+                        <div
+                            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#008dcf]/10 flex items-center justify-center transition-all duration-500 group-hover:bg-[#008dcf]/20">
+                            <span class="text-[#008dcf] text-xl">01</span>
+                        </div>
+                        <div class="h-48 mb-6 flex items-center justify-center"> <!-- Augmenté de h-40 à h-48 -->
                             <img src="/images/buy.svg" alt="Acheter"
-                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                                class="h-28 w-28 transition-transform duration-500 group-hover:scale-110">
+                            <!-- Augmenté de h-20 w-20 à h-28 w-28 -->
                         </div>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-4">Acheter</h3>
+                        <p class="text-gray-600 mb-6">
+                            Trouvez la propriété qui correspond parfaitement à vos aspirations, avec notre sélection
+                            premium et notre accompagnement expert.
+                        </p>
+
                     </div>
-
-                    <h3
-                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
-                        Acheter une propriété
-                    </h3>
-
-                    <p class="text-center text-gray-600">
-                        Découvrez des biens qui répondent à vos rêves et besoins. Nous vous accompagnons pour
-                        concrétiser votre projet immobilier.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 2 -->
-            <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 </div>
 
-                <div class="relative z-10">
-                    <div class="mb-8 flex justify-center">
-                        <div class="relative">
-                            <div
-                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
-                            </div>
+                <!-- Service 2 - Vendre -->
+                <div class="flex-shrink-0 snap-center">
+                    <div
+                        class="group relative h-full bg-white p-8 border border-gray-100 rounded-2xl hover:border-[#008dcf]/30 transition-all duration-500">
+                        <div
+                            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#008dcf]/10 flex items-center justify-center transition-all duration-500 group-hover:bg-[#008dcf]/20">
+                            <span class="text-[#008dcf] text-xl">02</span>
+                        </div>
+                        <div class="h-48 mb-6 flex items-center justify-center"> <!-- Augmenté de h-40 à h-48 -->
                             <img src="/images/key.svg" alt="Vendre"
-                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                                class="h-28 w-28 transition-transform duration-500 group-hover:scale-110">
+                            <!-- Augmenté de h-20 w-20 à h-28 w-28 -->
                         </div>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-4">Vendre</h3>
+                        <p class="text-gray-600 mb-6">
+                            Valorisation maximale de votre bien grâce à notre analyse de marché pointue et notre réseau
+                            d'acheteurs qualifiés.
+                        </p>
+
                     </div>
-
-                    <h3
-                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
-                        Vendre un bien
-                    </h3>
-
-                    <p class="text-center text-gray-600">
-                        Vendez votre bien rapidement et au meilleur prix. Notre expertise vous garantit une transaction
-                        réussie.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service Card 3 -->
-            <div
-                class="group relative overflow-hidden rounded-2xl bg-white p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer">
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ">
                 </div>
 
-                <div class="relative z-10">
-                    <div class="mb-8 flex justify-center">
-                        <div class="relative">
-                            <div
-                                class="absolute -inset-3 rounded-full bg-primary/5 transition-all duration-300 group-hover:bg-primary/10">
-                            </div>
+                <!-- Service 3 - Louer -->
+                <div class="flex-shrink-0 snap-center">
+                    <div
+                        class="group relative h-full bg-white p-8 border border-gray-100 rounded-2xl hover:border-[#008dcf]/30 transition-all duration-500">
+                        <div
+                            class="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#008dcf]/10 flex items-center justify-center transition-all duration-500 group-hover:bg-[#008dcf]/20">
+                            <span class="text-[#008dcf] text-xl">03</span>
+                        </div>
+                        <div class="h-48 mb-6 flex items-center justify-center"> <!-- Augmenté de h-40 à h-48 -->
                             <img src="/images/house.svg" alt="Louer"
-                                class="relative h-24 w-24 transition-transform duration-300 group-hover:scale-110 lg:h-32 lg:w-32" />
+                                class="h-28 w-28 transition-transform duration-500 group-hover:scale-110">
+                            <!-- Augmenté de h-20 w-20 à h-28 w-28 -->
                         </div>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-4">Louer</h3>
+                        <p class="text-gray-600 mb-6">
+                            Gestion locative haut de gamme avec garantie de loyers et sélection rigoureuse des
+                            locataires pour une sérénité totale.
+                        </p>
+                        <!-- #region -->
                     </div>
-
-                    <h3
-                        class="mb-4 text-center text-xl font-bold text-gray-900 transition-colors group-hover:text-primary">
-                        Louer un bien
-                    </h3>
-
-                    <p class="text-center text-gray-600">
-                        Trouvez la location idéale ou mettez votre bien en valeur. Nous simplifions chaque étape pour
-                        vous.
-                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- CTA Button -->
-        <div class="mt-10 flex justify-center">
-            <a href="/nos-biens"
-                class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary hover:bg-secondary hover:text-gray-800 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg">
-                <span>Voir toutes nos annonces</span>
-                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+        <!-- Modern CTA -->
+        <div class="mt-10 text-center">
+            <a href="/nos-biens" class="relative inline-flex items-center px-8 py-4 group">
+                <span
+                    class="absolute inset-0 bg-[#008dcf] rounded-full transform group-hover:scale-105 transition-transform duration-300"></span>
+                <span
+                    class="absolute inset-0 border-2 border-[#008dcf] rounded-full transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></span>
+                <span class="relative text-white font-medium text-lg flex items-center">
+                    Voir toutes nos offres
+                    <svg class="ml-3 w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </span>
             </a>
         </div>
     </div>
