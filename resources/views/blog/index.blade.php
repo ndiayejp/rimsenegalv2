@@ -1050,7 +1050,6 @@
                     @include('partials.search')
                 </div>
             </div>
-
         </div>
     </section>
 </x-layout>

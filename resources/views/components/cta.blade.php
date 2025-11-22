@@ -18,7 +18,7 @@
     </div>
 
     <!-- Contenu principal -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 lg:py-32">
+    <div class="relative z-10 max-w-screen-2xl mx-auto px-6  py-24 lg:py-32">
         <div class="flex flex-col lg:flex-row items-center gap-12">
             <!-- Partie texte -->
             <div class="lg:w-1/2">
@@ -88,7 +88,7 @@
                     <!-- Cadre photo avec effet 3D -->
                     <div
                         class="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-2xl border-8 border-white dark:border-gray-800 rotate-3">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        <img src="{{ url('images/work.jpeg') }}"
                             alt="Équipe immobilière"
                             class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
                     </div>

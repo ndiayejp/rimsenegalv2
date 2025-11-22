@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Mail;
 class ContactController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Summary of index
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -20,7 +21,9 @@ class ContactController extends Controller
 
 
     /**
-     * contact form
+     * Summary of submitContactForm
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function submitContactForm(Request $request)
     {
@@ -32,16 +35,13 @@ class ContactController extends Controller
        ]);
 
        try {
-            Mail::to('ndiayejp@gmail.com') // Adresse de réception
+            Mail::to('leonie.bandiaky@rimsenegal.com') // Adresse de réception
             ->send(new \App\Mail\ContactUsMail($validatedData));
 
             return redirect()->back()->with('success', 'Votre message a été envoyé avec succès.');
        } catch (\Exception $e) {
-            dd($e);
             return redirect()->back()->with('error', 'Une erreur est survenue. Veuillez réessayer.');
        }
     }
-
-
 
 }

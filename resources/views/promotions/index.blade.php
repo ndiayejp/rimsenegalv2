@@ -1040,11 +1040,10 @@
                                 </div>
                             </div>
                         @endif
-
                         <!-- Contenu de la promotion -->
                         <div
                             class="absolute bottom-0 left-0 right-0 p-6 bg-white dark:bg-gray-800 transform translate-y-0 group-hover:-translate-y-12 transition-transform duration-500">
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                            <h3 class="lg:text-2xl md:text-md text-sm font-bold text-gray-900 dark:text-white mb-2">
                                 {{ Str::limit($promo->title, 42) }}
                             </h3>
                             <p class="text-gray-600 dark:text-gray-300 mb-4">
@@ -1060,8 +1059,6 @@
                                 </svg>
                             </a>
                         </div>
-
-
                     </div>
                 @endforeach
             </div>

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Summary of index
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -21,16 +22,23 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Summary of show
+     * @param mixed $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($slug)
     {
         $categories = Category::all();
-
-
         $page = Page::published()->where('slug', $slug)->firstOrFail();
-
         return view('frontend.page', compact('page', 'categories'));
     }
 
+    /**
+     * Summary of sendContactForm
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendContactForm(Request $request){
         $validated = $request->validate([
             'property_id' => 'required',
@@ -40,9 +48,10 @@ class HomeController extends Controller
             'message' => 'required|string',
             'category'=>'required',
             'location'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'agent_email' => 'required|email',
         ]);
-        Mail::to('ndiayejp@gmail.com')->send(new \App\Mail\ContactAgency($validated));
+        Mail::to($validated['agent_email'])->send(new \App\Mail\ContactAgency($validated));
          return response()->json(['message' => 'Message envoyé avec succès !']);
     }
 }

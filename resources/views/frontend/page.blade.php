@@ -1037,12 +1037,8 @@
                             @include('partials.categories', ['categories' => $categories])
                             @include('partials.search')
                         </div>
-
-
-
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

@@ -1029,7 +1029,7 @@
             </svg>
         </div>
     </section>
-    <section class="bg-gradient-to-b from-gray-50 to-gray-100 antialiased">
+    <section class="px-4 bg-gradient-to-b from-gray-50 to-gray-100 antialiased">
         <div class="py-12 px-4 mx-auto max-w-screen-2xl">
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Contenu principal -->
@@ -1046,14 +1046,13 @@
                                             class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                                            <span class="text-white font-medium">Voir plus</span>
+                                            <span class="text-white font-medium">Zoomer +</span>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-
-                        <!-- Lightbox corrigée -->
+                        <!-- Lightbox -->
                         <div id="lightbox"
                             class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4">
                             <div class="relative w-full h-full flex items-center justify-center">
@@ -1065,7 +1064,6 @@
                                             d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
-
                                 <!-- Bouton précédent -->
                                 <button onclick="prevImage()"
                                     class="absolute left-6 text-white hover:text-gray-300 z-10">
@@ -1074,7 +1072,6 @@
                                             d="M15 19l-7-7 7-7" />
                                     </svg>
                                 </button>
-
                                 <!-- Bouton suivant -->
                                 <button onclick="nextImage()"
                                     class="absolute right-6 text-white hover:text-gray-300 z-10">
@@ -1083,21 +1080,17 @@
                                             d="M9 5l7 7-7 7" />
                                     </svg>
                                 </button>
-
                                 <!-- Contenu image -->
                                 <div class="max-w-[90vw] max-h-[90vh] flex items-center justify-center">
                                     <img id="lightbox-image" src="" alt=""
                                         class="max-w-full max-h-full object-contain">
                                 </div>
-
                                 <!-- Légende -->
                                 <div id="lightbox-caption"
                                     class="absolute bottom-6 left-0 right-0 text-center text-white text-lg"></div>
                             </div>
                         </div>
                     @endif
-
-
                     <!-- Description -->
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8">
                         <div class="p-6 md:p-8">
@@ -1133,7 +1126,6 @@
                                 @endforeach
                             </div>
                         </div>
-
                         <!-- CTA -->
                         <div class="p-6 bg-gray-50">
                             <a href="/contact"
@@ -1146,7 +1138,6 @@
                             </a>
                         </div>
                     </div>
-
                     <!-- Points clés -->
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden mt-6 ">
                         <div class="p-6 md:p-8">
@@ -1202,9 +1193,7 @@
                         'url' => $img->getUrl(),
                         'alt' => 'Projet immobilier ' . $promotion->title,
                     ]));
-
             let currentImageIndex = 0;
-
             function openLightbox(index) {
                 currentImageIndex = index;
                 updateLightboxImage();
@@ -1235,7 +1224,6 @@
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 updateLightboxImage();
             }
-
             // Navigation au clavier
             document.addEventListener('keydown', (e) => {
                 if (!document.getElementById('lightbox').classList.contains('hidden')) {

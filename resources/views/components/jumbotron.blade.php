@@ -5,7 +5,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40"></div>
     </div>
     <!-- Contenu principal -->
-    <div class="px-6 mx-auto max-w-7xl text-center py-32 lg:py-44 relative">
+    <div class="px-6 mx-auto max-w-screen-2xl text-center py-32 lg:py-44 relative">
         <!-- Marquage prestige -->
         <div class="absolute top-8 left-1/2 -translate-x-1/2">
             <span class="text-xs tracking-[0.3em] text-white/70 font-light">RÉGIE IMMOBILIÈRE MUGNIER</span>
@@ -14,7 +14,7 @@
 
         <h1
             class="text-5xl/none font-medium tracking-tight text-white sm:text-6xl/none lg:text-7xl/none font-serif animate-fade-in-up">
-            Excellence immobilière <span class="text-secondary">depuis 1956</span>
+           Votre Agence Immobilière <span class="text-secondary">depuis 1956</span>
         </h1>
 
         <p class="mt-8 max-w-2xl mx-auto text-lg leading-8 text-white/90 font-light animate-fade-in-up delay-100">
@@ -50,7 +50,7 @@
 
     <!-- Section statistiques -->
     <div class="relative bg-gradient-to-b from-transparent to-black/80 pb-24">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-screen-2xl px-6">
             <div
                 class="grid grid-cols-1 gap-px bg-white/5 sm:grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden border border-white/10 backdrop-blur-md">
                 <!-- Stat 1 -->

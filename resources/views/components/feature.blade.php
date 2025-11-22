@@ -5,9 +5,9 @@
         <div class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-t from-[#fff02a]/5 to-transparent"></div>
     </div>
 
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-screen-2xl px-6">
         <!-- Section header with animated underline -->
-        <div class="text-center max-w-2xl mx-auto mb-20">
+        <div class="text-center   mx-auto mb-20">
             <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">
                 <span class="relative inline-block">
                     <span

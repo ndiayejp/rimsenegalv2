@@ -1,5 +1,5 @@
 <section class="bg-gray-50 dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-2xl lg:py-16 lg:px-6">
+    <div class="py-8 px-4 mx-auto max-w-screen-2xl lg:py-16">
 
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2">
             @forelse ($posts as $post)

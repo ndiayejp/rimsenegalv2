@@ -1,7 +1,7 @@
 <x-layout>
     @section('title', $post->name)
     <section class="bg-graya-50 dark:bg-gray-900">
-        <div class="bg-primary overflow-hidden relative text-center  py-16 ">
+        <div class="bg-primary overflow-hidden relative text-center py-16 ">
             <h2
                 class="pt-20 text-3xl font-extrabold tracking-tight leading-none text-white md:text-4xl lg:text-4xl dark:text-white relative z-10">
                 {{ $post->name }}</h2>
@@ -1514,7 +1514,6 @@
                     <div class="my-5">
                         @include('partials.alsolike')
                     </div>
-
                 </div>
             </div>
         </div>

@@ -1026,7 +1026,6 @@
             </svg>
         </div>
     </section>
-
     <!-- Contact Form and Info -->
     <div class="container mx-auto px-4 py-16">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -1037,100 +1036,73 @@
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">Envoyez-nous un message</h3>
                     <p class="text-gray-500">Nous vous répondrons dans les plus brefs délais</p>
                 </div>
-
                 @include('shared.flash')
-
                 <form action="{{ route('contact.form') }}" method="POST" class="space-y-6">
                     @csrf
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-700">Nom</label>
-                            <div class="relative">
+                            <div class="relative group">
                                 <input type="text" name="name" wire:model="name" placeholder="Nom/Prénom"
                                     class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                                     required>
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                            clip-rule="evenodd" />
-                                    </svg>
+                                    <font-awesome-icon  icon="fa-solid fa-user" class="text-gray-400 group-focus-within:text-primary transition-colors text-sm"/>
                                 </div>
                             </div>
                         </div>
-
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-700">Email</label>
-                            <div class="relative">
+                            <div class="relative group">
                                 <input type="email" name="email" wire:model="email" placeholder="Email"
                                     class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                                     required>
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                    </svg>
+                                     <font-awesome-icon  icon="fa-solid fa-envelope-open" class="text-gray-400 group-focus-within:text-primary transition-colors text-sm"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-700">Objet de la demande</label>
-                        <div class="relative">
+                        <div class="relative group">
                             <input type="text" name="objet" wire:model="objet" placeholder="Service concerné"
                                 class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                                 required>
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                                <font-awesome-icon  icon="fa-solid fa-info" class="text-gray-400 group-focus-within:text-primary transition-colors text-sm"/>
                             </div>
                         </div>
                     </div>
-
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-700">Contenu</label>
-                        <div class="relative">
+                        <div class="relative group">
                             <textarea name="content" wire:model="content" rows="5" placeholder="Contenu du message"
                                 class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                                 required></textarea>
                             <div class="absolute top-3 left-3">
-                                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                                 <font-awesome-icon  icon="fa-solid fa-message" class="text-gray-400 group-focus-within:text-primary transition-colors text-sm"/>
                             </div>
                         </div>
                     </div>
-
                     <div class="pt-4">
                         <button type="submit"
-                            class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                            class="flex items-center justify-center gap-2 w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                             Envoyer votre message
-                            <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                             <font-awesome-icon  icon="fa-solid fa-arrow-right-long" class="text-gray-100 group-focus-within:text-primary transition-colors text-sm"/>
                         </button>
                     </div>
                 </form>
             </div>
-
             <!-- Informations de Contact -->
             <div class="space-y-8">
                 @foreach ($agencies as $agency)
                     <div
                         class="bg-white rounded-xl shadow-sm p-6 transform transition-all duration-300 hover:scale-105">
                         <div class="flex items-center gap-4">
-                            <div class="bg-primary/10 px-3 py-1.5 rounded-full">
-                                <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+                            <div class="bg-primary/10 px-2.5 py-1.5 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 group-focus-within:text-primary transition-colors text-sm" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z" /></svg>
+
                             </div>
                             <div>
                                 <h4 class="text-xl font-bold text-gray-800">{{ $agency->name }}</h4>
@@ -1140,8 +1112,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
         </div>
     </div>

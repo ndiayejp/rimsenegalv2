@@ -14,9 +14,9 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
-    {{-- @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    @php
+        $manifest = json_decode(file_get_contents(base_path('../build/manifest.json')), true);
     @endphp
     @if (isset($manifest['resources/js/app.js']))
         <script type="module" src="/build/{{ $manifest['resources/js/app.js']['file'] }}"></script>
@@ -26,9 +26,9 @@
         @if (isset($manifest['resources/js/app.js']['css'][0]))
             <link rel="stylesheet" href="/build/{{ $manifest['resources/js/app.js']['css'][0] }}">
         @endif
-    @endif --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @yield('styles')
+    @endif
+   {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+   @yield('styles')
 </head>
 
 <body class="bg-gray-50 text-white font-hanken-grotest">
@@ -41,7 +41,7 @@
                     Immobilière Mugnier</span>
             </a>
             <nav
-                class="text-white hidden md:flex border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 sticky top-0 z-50">
+                class="text-white hidden md:flex border-gray-200 dark:bg-gray-900 dark:border-gray-700 px-5 md:px-0 sticky top-0 z-50">
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul
                         class="flex flex-col text-sm lg:text-lg md:text-md font-medium md:space-x-2 rtl:space-x-reverse md:flex-row dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -119,7 +119,7 @@
                 <li class="list-none">
                     @if ($menu->children->count() > 0)
                         <!-- Menu avec sous-menus -->
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarLink"
                             class="flex items-center justify-between w-full py-2  font-bold text-gray-800 hover:text-primary md:hover:bg-transparent md:border-0 md:hover:text-primary  dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             {{ $menu->name }}
                         </button>

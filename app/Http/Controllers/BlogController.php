@@ -10,7 +10,8 @@ class BlogController extends Controller
 {
     protected $limit = 8;
     /**
-     * Display a listing of the resource.
+     * Summary of index
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -23,19 +24,17 @@ class BlogController extends Controller
         $category = request()->category;
         $posts =
         Category::where('slug',$category)->firstOrFail()->posts()->paginate($this->limit)->withQueryString();
-
         } else {
              $posts = Post::notDraft()->published()->paginate($this->limit);
         }
-
         return view('blog.index', compact('posts','categories'));
     }
 
 
-
-
     /**
-     * Display the specified resource.
+     * Summary of show
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show(string $slug)
     {
@@ -47,31 +46,6 @@ class BlogController extends Controller
         if(!$post){
             return redirect('posts.index')->with('error', 'aucun article trouvé');
         }
-
         return view('blog.show', compact('post', 'categories', 'mightAlsoLike','previous','next'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
